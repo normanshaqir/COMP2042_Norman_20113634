@@ -61,16 +61,16 @@ public class Main extends Application {
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
 		player = new Player("file:src/main/resources/frogger/froggerUp.png");
 		background.add(player);
-		background.add(new Obstacle("file:src/main/resources/obstacles/truck1"+"Right.png", 0, 649, 1, 120, 120));
-		background.add(new Obstacle("file:src/main/resources/obstacles/truck1"+"Right.png", 300, 649, 1, 120, 120));
-		background.add(new Obstacle("file:src/main/resources/obstacles/truck1"+"Right.png", 600, 649, 1, 120, 120));
-		background.add(new Obstacle("file:src/main/resources/obstacles/car1Left.png", 100, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/main/resources/obstacles/car1Left.png", 250, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/main/resources/obstacles/car1Left.png", 400, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/main/resources/obstacles/car1Left.png", 550, 597, -1, 50, 50));
-		background.add(new Obstacle("file:src/main/resources/obstacles/truck2Right.png", 0, 540, 1, 200, 200));
-		background.add(new Obstacle("file:src/main/resources/obstacles/truck2Right.png", 500, 540, 1, 200, 200));
-		background.add(new Obstacle("file:src/main/resources/obstacles/car1Left.png", 500, 490, -5, 50, 50));
+		background.add(new Obstacle("truck1Right", 0, 649, 1, 120, 120));
+		background.add(new Obstacle("truck1Right", 300, 649, 1, 120, 120));
+		background.add(new Obstacle("truck1Right", 600, 649, 1, 120, 120));
+		background.add(new Obstacle("car1Left", 100, 597, -1, 50, 50));
+		background.add(new Obstacle("car1Left", 250, 597, -1, 50, 50));
+		background.add(new Obstacle("car1Left", 400, 597, -1, 50, 50));
+		background.add(new Obstacle("car1Left", 550, 597, -1, 50, 50));
+		background.add(new Obstacle("truck2Right", 0, 540, 1, 200, 200));
+		background.add(new Obstacle("truck2Right", 500, 540, 1, 200, 200));
+		background.add(new Obstacle("car1Left", 500, 490, -5, 50, 50));
 		background.add(new Digit(0, 30, 360, 25));
 
 		background.start();

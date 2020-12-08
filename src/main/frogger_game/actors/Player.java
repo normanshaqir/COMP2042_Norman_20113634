@@ -20,6 +20,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	Image imgA2;
 	Image imgS2;
 	Image imgD2; // images to cycle through for animation
+	
 	int points = 0;
 	int end = 0;
 	private boolean second = false;
@@ -46,7 +47,8 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		imgW2 = new Image("file:src/main/resources/frogger/froggerUpJump.png", imgSize, imgSize, true, true);
 		imgA2 = new Image("file:src/main/resources/frogger/froggerLeftJump.png", imgSize, imgSize, true, true);
 		imgS2 = new Image("file:src/main/resources/frogger/froggerDownJump.png", imgSize, imgSize, true, true);
-		imgD2 = new Image("file:src/main/resources/frogger/froggerRightJump.png", imgSize, imgSize, true, true); 
+		imgD2 = new Image("file:src/main/resources/frogger/froggerRightJump.png", imgSize, imgSize, true, true);
+		
 		// images to cycle through for animation
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event){ // cycling through animations and handling movement and handling score
@@ -138,6 +140,18 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	@Override
 	public void act(long now) {
 		int bounds = 0;
+		
+		Image froggerDeath = new Image("file:src/main/resources/frogger/froggerUp.png", imgSize, imgSize, true, true);
+		
+		Image imgWaterDeath1 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath1.png", imgSize,imgSize, true, true);
+		Image imgWaterDeath2 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath2.png", imgSize,imgSize, true, true);
+		Image imgWaterDeath3 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath3.png", imgSize,imgSize, true, true);
+		Image imgWaterDeath4 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath4.png", imgSize,imgSize, true, true);
+		
+		Image imgCarDeath1 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath1.png", imgSize, imgSize, true, true);
+		Image imgCarDeath2 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath2.png", imgSize, imgSize, true, true);
+		Image imgCarDeath3 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath3.png", imgSize, imgSize, true, true);
+		
 		if (getY()<0 || getY()>734) { // prevents player from going out of bounds - moves player back to spawn point
 			setX(300);
 			setY(679.8+movement);
@@ -151,20 +165,20 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 				carD++;
 			}
 			if (carD==1) {
-				setImage(new Image("file:src/main/resources/obstacles/cardeath1.png", imgSize, imgSize, true, true));
+				setImage(imgCarDeath1);
 			}
 			if (carD==2) {
-				setImage(new Image("file:src/main/resources/obstacles/cardeath2.png", imgSize, imgSize, true, true));
+				setImage(imgCarDeath2);
 			}
 			if (carD==3) {
-				setImage(new Image("file:src/main/resources/obstacles//cardeath3.png", imgSize, imgSize, true, true));
+				setImage(imgCarDeath3);
 			}
 			if (carD == 4) { // after three cycles of animation, move frogger back to spawn
 				setX(300);
 				setY(679.8+movement);
 				carDeath = false;
 				carD = 0;
-				setImage(new Image("file:src/main/resources/frogger/froggerUp.png", imgSize, imgSize, true, true));
+				setImage(froggerDeath);
 				noMove = false;
 				
 				if (points>50) {
@@ -180,23 +194,23 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 				carD++;
 			}
 			if (carD==1) {
-				setImage(new Image("file:src/main/resources/frogger/waterdeath1.png", imgSize,imgSize , true, true));
+				setImage(imgWaterDeath1);
 			}
 			if (carD==2) {
-				setImage(new Image("file:src/main/resources/frogger/waterdeath2.png", imgSize,imgSize , true, true));
+				setImage(imgWaterDeath2);
 			}
 			if (carD==3) {
-				setImage(new Image("file:src/main/resources/frogger/waterdeath3.png", imgSize,imgSize , true, true));
+				setImage(imgWaterDeath3);
 			}
 			if (carD == 4) {
-				setImage(new Image("file:src/main/resources/frogger/waterdeath4.png", imgSize,imgSize , true, true));
+				setImage(imgWaterDeath4);
 			}
 			if (carD == 5) { // after three cycles of animation, move frogger back to spawn
 				setX(300);
 				setY(679.8+movement);
 				waterDeath = false;
 				carD = 0;
-				setImage(new Image("file:src/main/resources/frogger/froggerUp.png", imgSize, imgSize, true, true));
+				setImage(froggerDeath);
 				noMove = false;
 				
 				if (points>50) {

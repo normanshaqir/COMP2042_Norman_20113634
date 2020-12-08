@@ -28,7 +28,7 @@ public class Log extends Actor {
 			setImage(log1);
 		} else if (logType.equals("log2")) {
 			setImage(log2);
-		} else if (logType.equals("log3	")) {
+		} else if (logType.equals("log3")) {
 			setImage(log3); 
 		}
 
