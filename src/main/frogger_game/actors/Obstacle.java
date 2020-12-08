@@ -34,7 +34,7 @@ public class Obstacle extends Actor {
 		} else if (obstacleType.equals("truck1Left")) {
 			setImage(truck1Left);
 			
-		}else if (obstacleType.equals("truck1Right")) {
+		} else if (obstacleType.equals("truck1Right")) {
 			setImage(truck1Right);
 			
 		} else if (obstacleType.equals("truck2Left")) {

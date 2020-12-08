@@ -34,9 +34,12 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	boolean changeScore = false;
 	int carD = 0;
 	double w = 800;
+	
 	ArrayList<End> inter = new ArrayList<End>();
 	
-	public Player(String imageLink) {
+	private static Player instance = new Player("file:src/main/resources/frogger/froggerUp.png");
+	
+	private Player (String imageLink) {
 		setImage(new Image(imageLink, imgSize, imgSize, true, true));
 		setX(300);
 		setY(679.8+movement);
@@ -137,9 +140,13 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		});
 	}
 	
+	public static Player getInstance() {
+		return instance;
+		
+	}
+	
 	@Override
 	public void act(long now) {
-		int bounds = 0;
 		
 		Image froggerDeath = new Image("file:src/main/resources/frogger/froggerUp.png", imgSize, imgSize, true, true);
 		

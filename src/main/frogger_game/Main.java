@@ -37,14 +37,13 @@ public class Main extends Application {
 		background.add(new Log("log3", 150, 0, 166, 0.75));
 		background.add(new Log("log3", 150, 220, 166, 0.75));
 		background.add(new Log("log3", 150, 440, 166, 0.75));
-		//background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 0, 166, 0.75));
+
 		background.add(new Log("log1", 300, 0, 276, -2));
 		background.add(new Log("log1", 300, 400, 276, -2));
-		//background.add(new Log("file:src/p4_group_8_repo/logs.png", 300, 800, 276, -2));
+		
 		background.add(new Log("log3", 150, 50, 329, 0.75));
 		background.add(new Log("log3", 150, 270, 329, 0.75));
 		background.add(new Log("log3", 150, 490, 329, 0.75));
-		//background.add(new Log("file:src/p4_group_8_repo/log3.png", 150, 570, 329, 0.75));
 		
 		background.add(new Turtle(500, 376, -1, 130, 130));
 		background.add(new Turtle(300, 376, -1, 130, 130)); // create two turtles that never submerge (dry turtles)
@@ -59,7 +58,7 @@ public class Main extends Application {
 		background.add(new End(141 + 141-13,96));
 		background.add(new End(141 + 141-13+141-13+1,96));
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
-		player = new Player("file:src/main/resources/frogger/froggerUp.png");
+		player = Player.getInstance();
 		background.add(player);
 		background.add(new Obstacle("truck1Right", 0, 649, 1, 120, 120));
 		background.add(new Obstacle("truck1Right", 300, 649, 1, 120, 120));
