@@ -29,7 +29,7 @@ public class Animal extends Actor { // Animal.class aka Frogger (player) deals w
 	int imgSize = 40; // width and height of image - corresponds with hitbox as well
 	boolean carDeath = false;
 	boolean waterDeath = false;
-	boolean stop = false;
+	boolean stop = false;	
 	boolean changeScore = false;
 	int carD = 0;
 	double w = 800;
