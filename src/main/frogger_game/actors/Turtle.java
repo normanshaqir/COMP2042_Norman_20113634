@@ -35,9 +35,9 @@ public class Turtle extends Actor{
 	
 	public Turtle(int xpos, int ypos, int s, int w, int h) { // on constructor call, create one instance of Turtle object
 															// with images to cycle through for animation
-		turtle1 = new Image("file:src/p4_group_8_repo/TurtleAnimation1.png", w, h, true, true);
-		turtle2 = new Image("file:src/p4_group_8_repo/TurtleAnimation2.png", w, h, true, true);
-		turtle3 = new Image("file:src/p4_group_8_repo/TurtleAnimation3.png", w, h, true, true); 
+		turtle1 = new Image("file:src/main/resources/turtles/TurtleAnimation1.png", w, h, true, true);
+		turtle2 = new Image("file:src/main/resources/turtles/TurtleAnimation2.png", w, h, true, true);
+		turtle3 = new Image("file:src/main/resources/turtles/TurtleAnimation3.png", w, h, true, true); 
 		
 		setX(xpos);
 		setY(ypos);

@@ -19,8 +19,19 @@ public class Log extends Actor {
 		
 	}
 	
-	public Log(String imageLink, int size, int xpos, int ypos, double s) {
-		setImage(new Image(imageLink, size, size, true, true)); // standard constructor for classes extending Actor
+	public Log(String logType, int size, int xpos, int ypos, double s) {
+		Image log1 = new Image("file:src/main/resources/logs/log1.png", size, size, true, true);
+		Image log2 = new Image("file:src/main/resources/logs/log2.png", size, size, true, true);
+		Image log3 = new Image("file:src/main/resources/logs/log3.png", size, size, true, true);
+		
+		if (logType.equals("log1")) { 
+			setImage(log1);
+		} else if (logType.equals("log2")) {
+			setImage(log2);
+		} else if (logType.equals("log3	")) {
+			setImage(log3); 
+		}
+
 		setX(xpos);
 		setY(ypos);
 		speed = s;
