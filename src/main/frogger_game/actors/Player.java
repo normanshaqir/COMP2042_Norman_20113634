@@ -159,12 +159,13 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		Image imgCarDeath2 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath2.png", imgSize, imgSize, true, true);
 		Image imgCarDeath3 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath3.png", imgSize, imgSize, true, true);
 		
-		if (getY()<0 || getY()>734) { // prevents player from going out of bounds - moves player back to spawn point
-			setX(300);
-			setY(679.8+movement);
+		if (getY()>734) { // prevents player from going out of y bounds
+			//setX(300);
+			//setY(679.8+movement);
+			move(0, -movement);
 		}
 		if (getX()<0) { // prevents player from going out of bounds
-			move(movement*2, 0);
+			move(movement, 0);
 		}
 		if (carDeath) { // cycling through death animation when collide with car/truck
 			noMove = true; // now determines how quickly animations are cycled through (higher = slower)
@@ -229,7 +230,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		}
 		
 		if (getX()>600) { // prevents player from going out of bounds
-			move(-movement*2, 0);
+			move(-movement, 0);
 		}
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) { // check for collision, if yes trigger carDeath animation and move to spawn
 			carDeath = true;
