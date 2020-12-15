@@ -9,33 +9,34 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import main.frogger_game.world.*;
+import main.frogger_game.actors.*;
 
 
 public class Player extends Actor { // Animal.class aka Frogger (player) deals with animating the sprite, handling collision, and player score.
-	Image imgW1;
-	Image imgA1;
-	Image imgS1;
-	Image imgD1;
-	Image imgW2;
-	Image imgA2;
-	Image imgS2;
-	Image imgD2; // images to cycle through for animation
+	private Image imgW1;
+	private Image imgA1;
+	private Image imgS1;
+	private Image imgD1;
+	private Image imgW2;
+	private Image imgA2;
+	private Image imgS2;
+	private Image imgD2; // images to cycle through for animation
 	
-	int points = 0;
-	int end = 0;
+	private int points = 0;
+	private int end = 0;
 	private boolean second = false;
-	boolean noMove = false;
-	double movement = 13.3333333*2;
-	double movementX = 10.666666*2;
-	int imgSize = 40; // width and height of image - corresponds with hitbox as well
-	boolean carDeath = false;
-	boolean waterDeath = false;
-	boolean stop = false;	
-	boolean changeScore = false;
-	int carD = 0;
-	double w = 800;
+	private boolean noMove = false;
+	private double movement = 13.3333333*2;
+	private double movementX = 10.666666*2;
+	private int imgSize = 40; // width and height of image - corresponds with hitbox as well
+	private boolean carDeath = false;
+	private boolean waterDeath = false;
+	private boolean stop = false;	
+	private boolean changeScore = false;
+	private int carD = 0;
+	private double w = 800;
 	
-	ArrayList<End> inter = new ArrayList<End>();
+	private ArrayList<End> inter = new ArrayList<End>();
 	
 	private static Player instance = new Player("file:src/main/resources/frogger/froggerUp.png");
 	
@@ -140,7 +141,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		});
 	}
 	
-	public static Player getInstance() {
+	public static Player getInstance() { // Singleton design pattern
 		return instance;
 		
 	}
@@ -229,7 +230,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 			
 		}
 		
-		if (getX()>600) { // prevents player from going out of bounds
+		if (getX()>600) { // prevents player from going out of X bounds
 			move(-movement, 0);
 		}
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) { // check for collision, if yes trigger carDeath animation and move to spawn
@@ -240,18 +241,18 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		}
 		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) { // if player is on Log, move player alongside the Log
 			if(getIntersectingObjects(Log.class).get(0).getLeft()) // check if Log is moving left or right
-				move(-2,0); // move left
+				move(getOneIntersectingObject(Log.class).getSpeed(),0); // move left
 			else
-				move (.75,0); // move right
+				move(getOneIntersectingObject(Log.class).getSpeed(),0); // move right
 		}
 		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle
-			move(-1,0); // move left (all turtles move to the left)
+			move(getOneIntersectingObject(Turtle.class).getSpeed(),0); // move left (all turtles move to the left)
 		}
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { // similar to Turtle class, except for isSunk
 			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
 				waterDeath = true; // trigger waterDeath if isSunk returns true
 			} else {
-				move(-1,0); // move left
+				move(getOneIntersectingObject(WetTurtle.class).getSpeed(),0); // move left
 			}
 		}
 		else if (getIntersectingObjects(End.class).size() >= 1) {

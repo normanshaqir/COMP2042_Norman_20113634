@@ -3,14 +3,14 @@ package main.frogger_game.actors;
 import javafx.scene.image.Image;
 
 public class WetTurtle extends Actor{
-	Image turtle1;
-	Image turtle2;
-	Image turtle3;
-	Image turtle4;
+	private Image turtle1;
+	private Image turtle2;
+	private Image turtle3;
+	private Image turtle4;
 	private int speed;
-	int i = 1;
-	boolean bool = true;
-	boolean sunk = false;
+	private int i = 1;
+	private boolean bool = true;
+	private boolean sunk = false;
 	@Override
 	public void act(long now) {
 
@@ -31,7 +31,7 @@ public class WetTurtle extends Actor{
 					sunk = true;
 				}
 			
-		move(speed , 0);
+		move(speed, 0);
 		if (getX() > 600 && speed>0)
 			setX(-200);
 		if (getX() < -75 && speed<0)
@@ -50,5 +50,11 @@ public class WetTurtle extends Actor{
 	
 	public boolean isSunk() {
 		return sunk;
+	}
+	public int getSpeed() {
+		return speed;
+	}
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 }

@@ -4,6 +4,7 @@ import javafx.scene.image.Image;
 
 public class Obstacle extends Actor {
 	private int speed;
+	
 	@Override
 	public void act(long now) {
 		move(speed , 0); // moves horizontally
@@ -47,6 +48,14 @@ public class Obstacle extends Actor {
 		setX(xpos);
 		setY(ypos);
 		speed = s;
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 
 }

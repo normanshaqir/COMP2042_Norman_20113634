@@ -3,12 +3,13 @@ package main.frogger_game.actors;
 import javafx.scene.image.Image;
 
 public class Turtle extends Actor{
-	Image turtle1;
-	Image turtle2;
-	Image turtle3;
+	private Image turtle1;
+	private Image turtle2;
+	private Image turtle3;
 	private int speed;
 	int i = 1;
-	boolean bool = true;
+	private boolean bool = true;
+	
 	@Override
 	public void act(long now) {
 
@@ -43,5 +44,13 @@ public class Turtle extends Actor{
 		setY(ypos);
 		speed = s;
 		setImage(turtle2);
+	}
+
+	public int getSpeed() {
+		return speed;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 }

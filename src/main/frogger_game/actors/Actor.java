@@ -2,10 +2,12 @@ package main.frogger_game.actors;
 
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
+ 
 
 import java.util.ArrayList;
 
 import main.frogger_game.world.*;
+
 
 
 public abstract class Actor extends ImageView{

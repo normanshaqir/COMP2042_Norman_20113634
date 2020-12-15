@@ -5,7 +5,7 @@ import javafx.scene.image.Image;
 import main.frogger_game.actors.Actor;
 
 public class End extends Actor{
-	boolean activated = false;
+	private boolean activated = false;
 	@Override
 	public void act(long now) {
 		// TODO Auto-generated method st
