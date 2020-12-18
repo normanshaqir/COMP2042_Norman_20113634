@@ -1,8 +1,7 @@
-package main.frogger_game.world;
+package main.frogger_game.actors;
 
 
 import javafx.scene.image.Image;
-import main.frogger_game.actors.Actor;
 
 public class End extends Actor{
 	private boolean activated = false;
@@ -14,11 +13,11 @@ public class End extends Actor{
 	public End(int x, int y) {
 		setX(x);
 		setY(y);
-		setImage(new Image("file:src/main/resources/misc/End.png", 60, 60, true, true)); // hole
+		setImage(new Image(FileNames.IMG_END, 60, 60, true, true)); // hole
 	}
 	
 	public void setEnd() {
-		setImage(new Image("file:src/main/resources/misc/FrogEnd.png", 70, 70, true, true)); // frog in hole
+		setImage(new Image(FileNames.IMG_END_FROG, 70, 70, true, true)); // frog in hole
 		activated = true;
 	}
 	

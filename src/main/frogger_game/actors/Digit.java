@@ -1,7 +1,6 @@
-package main.frogger_game.world;
+package main.frogger_game.actors;
 
 import javafx.scene.image.Image;
-import main.frogger_game.actors.Actor;
 
 public class Digit extends Actor {
 	private int dim;

@@ -1,11 +1,11 @@
 package main.frogger_game.actors;
 
 import javafx.scene.image.Image;
-import main.frogger_game.world.*;
 
 public class Log extends Actor {
 
 	private double speed;
+	
 	@Override
 	public void act(long now) {
 		move(speed, 0); // move horizontally
@@ -20,9 +20,9 @@ public class Log extends Actor {
 	}
 	
 	public Log(String logType, int size, int xpos, int ypos, double s) {
-		Image log1 = new Image("file:src/main/resources/logs/log1.png", size, size, true, true);
-		Image log2 = new Image("file:src/main/resources/logs/log2.png", size, size, true, true);
-		Image log3 = new Image("file:src/main/resources/logs/log3.png", size, size, true, true);
+		Image log1 = new Image(FileNames.IMG_LOG_1, size, size, true, true);
+		Image log2 = new Image(FileNames.IMG_LOG_2, size, size, true, true);
+		Image log3 = new Image(FileNames.IMG_LOG_3, size, size, true, true);
 		
 		if (logType.equals("log1")) { 
 			setImage(log1);

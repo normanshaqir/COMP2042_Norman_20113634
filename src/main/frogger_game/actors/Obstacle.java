@@ -17,34 +17,7 @@ public class Obstacle extends Actor {
 			setX(600);
 	}
 	
-	public Obstacle(String obstacleType, int xpos, int ypos, int s, int w, int h) { // standard constructor for classes extending Actor
-		Image car1Left = new Image("file:src/main/resources/obstacles/car1Left.png", w, h, true, true);
-		Image car1Right = new Image("file:src/main/resources/obstacles/car1Right.png", w, h, true, true);
-
-		Image truck1Left = new Image("file:src/main/resources/obstacles/truck1Left.png", w, h, true, true);
-		Image truck1Right = new Image("file:src/main/resources/obstacles/truck1Right.png", w, h, true, true);
-		Image truck2Left = new Image("file:src/main/resources/obstacles/truck2Left.png", w, h, true, true);
-		Image truck2Right = new Image("file:src/main/resources/obstacles/truck2Right.png", w, h, true, true);
-		
-		if (obstacleType.equals("car1Left")) {
-			setImage(car1Left);
-			
-		} else if (obstacleType.equals("car1Right")) {
-			setImage(car1Right);
-			
-		} else if (obstacleType.equals("truck1Left")) {
-			setImage(truck1Left);
-			
-		} else if (obstacleType.equals("truck1Right")) {
-			setImage(truck1Right);
-			
-		} else if (obstacleType.equals("truck2Left")) {
-			setImage(truck2Left);
-			
-		} else if (obstacleType.equals("truck2Right")) {
-			setImage(truck2Right);
-			
-		}
+	public Obstacle(int xpos, int ypos, int s, int w, int h) { // standard constructor for classes extending Actor
 		setX(xpos);
 		setY(ypos);
 		speed = s;

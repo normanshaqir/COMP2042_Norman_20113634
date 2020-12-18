@@ -8,10 +8,9 @@ import java.util.ArrayList;
 
 import main.frogger_game.world.*;
 
-
-
 public abstract class Actor extends ImageView{
-
+	protected ActorImages FileNames = new ActorImages();
+	
     public void move(double dx, double dy) { // moves all actors/sprites by getting current coordinates and adding speed. 
         setX(getX() + dx);
         setY(getY() + dy);
