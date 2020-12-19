@@ -1,7 +1,5 @@
 package main.frogger_game.actors;
 
-import javafx.scene.image.Image;
-
 public class Obstacle extends Actor {
 	private int speed;
 	

@@ -43,14 +43,8 @@ public abstract class Actor extends ImageView{
     }
 
     public <A extends Actor> A getOneIntersectingObject(java.lang.Class<A> cls) { // method used to return one actor that actor is colliding/intersecting with
-        ArrayList<A> someArray = new ArrayList<A>();
-        for (A actor: getWorld().getObjects(cls)) {
-            if (actor != this && actor.intersects(this.getBoundsInLocal())) {
-                someArray.add(actor);
-                break;
-            }
-        }
-        return someArray.get(0);
+        return getIntersectingObjects(cls).get(0);
+        
     }
 
     public abstract void act(long now);

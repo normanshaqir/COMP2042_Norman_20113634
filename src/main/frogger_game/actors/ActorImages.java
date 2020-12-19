@@ -1,7 +1,5 @@
 package main.frogger_game.actors;
 
-import javafx.scene.image.Image;
-
 public class ActorImages {
 	final String IMG_LEVEL_BACKGROUND = "file:src/main/resources/misc/background.png";
 	
@@ -12,7 +10,7 @@ public class ActorImages {
 	// Logs
 	final String IMG_LOG_1 = "file:src/main/resources/logs/log1.png";
 	final String IMG_LOG_2 = "file:src/main/resources/logs/log2.png";
-	final String IMG_LOG_3 = "file:src/main/resources/logs/log3.png";
+	final String IMG_LOG_3 = "file:src/main/resources/logs/log3.png";	
 	
 	// Turtles
 	final String IMG_TURTLE_1 = "file:src/main/resources/turtles/TurtleAnimation1.png";
