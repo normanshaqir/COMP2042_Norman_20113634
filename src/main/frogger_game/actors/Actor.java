@@ -49,7 +49,7 @@ public class Actor extends ImageView{
         
     }
     
-    public void manageInput(InputEvent e) {
+    public void manageInput(InputEvent e) { //TODO:
         
     }
 

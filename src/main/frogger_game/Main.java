@@ -46,8 +46,8 @@ public class Main extends Application {
 		background.add(new Log(ActorImages.IMG_LOG_3, 150, 270, 329, 0.75));
 		background.add(new Log(ActorImages.IMG_LOG_3, 150, 490, 329, 0.75));
 		
-		background.add(new Turtle(500, 376, -1, 130, 130));
-		background.add(new Turtle(300, 376, -1, 130, 130)); // create two turtles that never submerge (dry turtles)
+		background.add(new DryTurtle(500, 376, -1, 130, 130));
+		background.add(new DryTurtle(300, 376, -1, 130, 130)); // create two turtles that never submerge (dry turtles)
 		
 		background.add(new WetTurtle(700, 376, -1, 130, 130));
 		background.add(new WetTurtle(600, 217, -1, 130, 130)); 

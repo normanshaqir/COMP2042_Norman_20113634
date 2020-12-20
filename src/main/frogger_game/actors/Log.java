@@ -4,7 +4,6 @@ import javafx.scene.image.Image;
 
 public class Log extends AnimActor {
 
-	
 	@Override
 	public void act(long now) {
 		move(getSpeed(), 0); // move horizontally

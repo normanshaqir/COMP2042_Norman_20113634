@@ -248,8 +248,8 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 				move(getOneIntersectingObject(Log.class).getSpeed(),0); 
 			
 		}
-		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle
-			move(getOneIntersectingObject(Turtle.class).getSpeed(),0); // move left (all turtles move to the left)
+		else if (getIntersectingObjects(DryTurtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle
+			move(getOneIntersectingObject(DryTurtle.class).getSpeed(),0); // move left (all turtles move to the left)
 			
 		}
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { // similar to Turtle class, except for isSunk

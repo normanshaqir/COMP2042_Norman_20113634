@@ -2,16 +2,6 @@ package main.frogger_game.actors;
 
 public class Obstacle extends AnimActor {
 	
-	public Obstacle(String imageType, int w, int h, int xpos, int ypos, int s) { // standard constructor for classes extending Actor
-		super(imageType, w, h, xpos, ypos, s);
-		setRightDespawnPos(600);
-		setLeftDespawnPos(-50);
-		
-		setRightRespawnPos(-200);
-		setLeftRespawnPos(600);
-	}
-	
-	
 	@Override
 	public void act(long now) {
 		move(getSpeed() , 0); // moves horizontally
@@ -25,4 +15,12 @@ public class Obstacle extends AnimActor {
 //			setX(600);
 	}
 	
+	public Obstacle(String imageType, int w, int h, int xpos, int ypos, int s) { // standard constructor for classes extending Actor
+		super(imageType, w, h, xpos, ypos, s);
+		setRightDespawnPos(600);
+		setLeftDespawnPos(-50);
+		
+		setRightRespawnPos(-200);
+		setLeftRespawnPos(600);
+	}
 }
