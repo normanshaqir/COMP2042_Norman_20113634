@@ -245,10 +245,7 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 		}
 
 		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) { // if player is on Log, move player alongside the Log
-			if(getOneIntersectingObject(Log.class).getLeft()) // check if Log is moving left or right
-				move(getOneIntersectingObject(Log.class).getSpeed(),0); // move left
-			else
-				move(getOneIntersectingObject(Log.class).getSpeed(),0); // move right
+				move(getOneIntersectingObject(Log.class).getSpeed(),0); 
 			
 		}
 		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle

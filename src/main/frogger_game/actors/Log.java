@@ -3,7 +3,10 @@ package main.frogger_game.actors;
 import javafx.scene.image.Image;
 
 public class Log extends AnimActor {
-
+	private int spawnPos;
+	private int leftDespawnPos;
+	private int rightDespawnPos;
+	
 	@Override
 	public void act(long now) {
 		move(getSpeed(), 0); // move horizontally
@@ -32,9 +35,5 @@ public class Log extends AnimActor {
 //		}
 
 		
-	}
-	
-	public boolean getLeft() {
-		return getSpeed() < 0;
 	}
 }

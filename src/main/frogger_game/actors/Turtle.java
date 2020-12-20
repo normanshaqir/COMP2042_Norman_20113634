@@ -9,7 +9,6 @@ public class Turtle extends AnimActor{
 
 	int i = 1;
 
-	
 	@Override
 	public void act(long now) {
 
