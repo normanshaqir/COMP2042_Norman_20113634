@@ -34,7 +34,7 @@ public class MyStage extends World{
 		mediaPlayer = new MediaPlayer(sound);
 		mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
 	    mediaPlayer.play();
-	}
+	}	
 	
 	public void stopMusic() {
 		mediaPlayer.stop();

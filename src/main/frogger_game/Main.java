@@ -34,22 +34,22 @@ public class Main extends Application {
 	    
 		background.add(froggerback);
 		
-		background.add(new Log("log3", 150, 0, 166, 1.5));
-		background.add(new Log("log3", 150, 220, 166, 1.5));
-		background.add(new Log("log3", 150, 440, 166, 1.5));
+		background.add(new Log("log3", 150, 0, 166,  0.75)); 
+		background.add(new Log("log3", 150, 220, 166,  0.75));
+		background.add(new Log("log3", 150, 440, 166,  0.75));
 
-		background.add(new Log("log1", 300, 0, 276, -4));
-		background.add(new Log("log1", 300, 400, 276, -4));
+		background.add(new Log("log1", 300, 0, 276, -2));
+		background.add(new Log("log1", 300, 400, 276, -2));
 		
-		background.add(new Log("log3", 150, 50, 329, 2));
-		background.add(new Log("log3", 150, 270, 329, 2));
-		background.add(new Log("log3", 150, 490, 329, 2));
+		background.add(new Log("log3", 150, 50, 329, 0.75));
+		background.add(new Log("log3", 150, 270, 329, 0.75));
+		background.add(new Log("log3", 150, 490, 329, 0.75));
 		
 		background.add(new Turtle(500, 376, -1, 130, 130));
 		background.add(new Turtle(300, 376, -1, 130, 130)); // create two turtles that never submerge (dry turtles)
 		
 		background.add(new WetTurtle(700, 376, -1, 130, 130));
-		background.add(new WetTurtle(600, 217, -1, 130, 130));
+		background.add(new WetTurtle(600, 217, -1, 130, 130)); 
 		background.add(new WetTurtle(400, 217, -1, 130, 130));
 		background.add(new WetTurtle(200, 217, -1, 130, 130)); // create four turtles that submerge (wet turtles)
 
@@ -110,6 +110,7 @@ public class Main extends Application {
     
     public void setNumber(int n) { // invokes Digit constructor to create a new image corresponding to current score (VISUAL)
     	int shift = 0;
+    	
     	while (n > 0) {
     		  int d = n / 10;
     		  int k = n - d * 10;

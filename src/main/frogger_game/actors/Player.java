@@ -35,7 +35,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	private int carD = 0;
 	private double w = 800;
 	
-	private ArrayList<End> inter = new ArrayList<End>();
+	private ArrayList<End> inter;
 	
 	private static Player instance = new Player("file:src/main/resources/frogger/froggerUp.png");
 	
@@ -112,7 +112,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 				if (event.getCode() == KeyCode.W) {	  
 					if (getY() < w) {
 						changeScore = true;
-						w = getY();
+						w = getY(); // ensures that player cannot get points by going back and forth
 						points+=10;
 					}
 	                move(0, -movement);
@@ -155,21 +155,27 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		Image imgWaterDeath3 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath3.png", imgSize,imgSize, true, true);
 		Image imgWaterDeath4 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath4.png", imgSize,imgSize, true, true);
 		
-		Image imgCarDeath1 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath1.png", imgSize, imgSize, true, true);
-		Image imgCarDeath2 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath2.png", imgSize, imgSize, true, true);
-		Image imgCarDeath3 = new Image("file:src/main/resources/obstacles/deathAnimations/cardeath3.png", imgSize, imgSize, true, true);
+		Image imgCarDeath1 = new Image("file:src/main/resources/frogger/deathAnimations/cardeath1.png", imgSize, imgSize, true, true);
+		Image imgCarDeath2 = new Image("file:src/main/resources/frogger/deathAnimations/cardeath2.png", imgSize, imgSize, true, true);
+		Image imgCarDeath3 = new Image("file:src/main/resources/frogger/deathAnimations/cardeath3.png", imgSize, imgSize, true, true);
 		
 		if (getY()>734) { // prevents player from going out of y bounds
 			//setX(300);
 			//setY(679.8+movement);
 			move(0, -movement);
 		}
+		
 		if (getX()<0) { // prevents player from going out of bounds
 			move(movement, 0);
 		}
+		
+		if (getX()>600) { // prevents player from going out of X bounds
+			move(-movement, 0);
+		}
+		
 		if (carDeath) { // cycling through death animation when collide with car/truck
 			noMove = true; // now determines how quickly animations are cycled through (higher = slower)
-			if ((now)% 2 ==0) { //
+			if ((now)% 11 ==0) { //
 				carD++;
 			}
 			if (carD==1) {
@@ -182,11 +188,12 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 				setImage(imgCarDeath3);
 			}
 			if (carD == 4) { // after three cycles of animation, move frogger back to spawn
+				setImage(froggerDeath);
 				setX(300);
 				setY(679.8+movement);
 				carDeath = false;
 				carD = 0;
-				setImage(froggerDeath);
+				
 				noMove = false;
 				
 				if (points>50) {
@@ -229,35 +236,34 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 			
 		}
 		
-		if (getX()>600) { // prevents player from going out of X bounds
-			move(-movement, 0);
-		}
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) { // check for collision, if yes trigger carDeath animation and move to spawn
 			carDeath = true;
+			
 		}
-		if (getX() == 240 && getY() == 82) {
-			stop = true;
-		}
+
 		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) { // if player is on Log, move player alongside the Log
-			if(getIntersectingObjects(Log.class).get(0).getLeft()) // check if Log is moving left or right
+			if(getOneIntersectingObject(Log.class).getLeft()) // check if Log is moving left or right
 				move(getOneIntersectingObject(Log.class).getSpeed(),0); // move left
 			else
 				move(getOneIntersectingObject(Log.class).getSpeed(),0); // move right
+			
 		}
 		else if (getIntersectingObjects(Turtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle
 			move(getOneIntersectingObject(Turtle.class).getSpeed(),0); // move left (all turtles move to the left)
+			
 		}
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { // similar to Turtle class, except for isSunk
-			if (getIntersectingObjects(WetTurtle.class).get(0).isSunk()) {
+			if (getOneIntersectingObject(WetTurtle.class).isSunk()) {
 				waterDeath = true; // trigger waterDeath if isSunk returns true
 			} else {
-				move(getOneIntersectingObject(WetTurtle.class).getSpeed(),0); // move left
+				move(getOneIntersectingObject(WetTurtle.class).getSpeed(), 0); // move left
 			}
+			
 		}
 		else if (getIntersectingObjects(End.class).size() >= 1) {
-			inter = (ArrayList<End>) getIntersectingObjects(End.class);
+			inter = (ArrayList<End>) getIntersectingObjects(End.class); // TODO: modify how score is updated. Currently returns a new ArrayList everytime.
 			
-			if (getIntersectingObjects(End.class).get(0).isActivated()) { // if player collides with frog in hole, deduct points
+			if (getOneIntersectingObject(End.class).isActivated()) { // if player collides with frog in hole, deduct points
 				end--;
 				points-=50;
 			}
@@ -265,15 +271,16 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 			points+=50;
 			changeScore = true;
 			w=800;
-			getIntersectingObjects(End.class).get(0).setEnd(); // put frog in hole
+			
+			getOneIntersectingObject(End.class).setEnd(); // put frog in hole
 			end++; // increment end, end == 5 triggers game over screen
+			
 			setX(300);
 			setY(679.8+movement); // move player back to spawn
 		}
-		else if (getY()<413){ // if player collides/falls into water
+		else if (getY()<413) { // if player collides/falls into water
 			waterDeath = true;
-			//setX(300);
-			//setY(679.8+movement);
+
 		}
 	}
 	public boolean getStop() { // game over function, called when all five holes are filled with frogs
@@ -284,7 +291,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		return points;
 	}
 	
-	public boolean changeScore() { // ?
+	public boolean changeScore() { // get value of changeScore
 		if (changeScore) {
 			changeScore = false;
 			return true;

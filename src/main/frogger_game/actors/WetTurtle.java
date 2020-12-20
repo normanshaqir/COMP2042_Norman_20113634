@@ -8,9 +8,8 @@ public class WetTurtle extends Actor{
 	private Image turtle3;
 	private Image turtle4;
 	private int speed;
-	private int i = 1;
-	private boolean bool = true;
 	private boolean sunk = false;
+	
 	@Override
 	public void act(long now) {
 
@@ -32,16 +31,17 @@ public class WetTurtle extends Actor{
 				}
 			
 		move(speed, 0);
+		
 		if (getX() > 600 && speed>0)
 			setX(-200);
 		if (getX() < -75 && speed<0)
 			setX(600);
 	}
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) { 
-		turtle1 = new Image(FileNames.IMG_WET_TURTLE_1, w, h, true, true);
-		turtle2 = new Image(FileNames.IMG_WET_TURTLE_2, w, h, true, true);
-		turtle3 = new Image(FileNames.IMG_WET_TURTLE_3, w, h, true, true); 
-		turtle4 = new Image(FileNames.IMG_WET_TURTLE_4, w, h, true, true); // cycling through animations.
+		turtle1 = new Image(ActorImages.IMG_WET_TURTLE_1, w, h, true, true);
+		turtle2 = new Image(ActorImages.IMG_WET_TURTLE_2, w, h, true, true);
+		turtle3 = new Image(ActorImages.IMG_WET_TURTLE_3, w, h, true, true); 
+		turtle4 = new Image(ActorImages.IMG_WET_TURTLE_4, w, h, true, true); // cycling through animations.
 		setX(xpos);
 		setY(ypos); // set x,y coordinates of ImageView object
 		speed = s;

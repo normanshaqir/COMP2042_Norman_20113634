@@ -20,9 +20,9 @@ public class Log extends Actor {
 	}
 	
 	public Log(String logType, int size, int xpos, int ypos, double s) {
-		Image log1 = new Image(FileNames.IMG_LOG_1, size, size, true, true);
-		Image log2 = new Image(FileNames.IMG_LOG_2, size, size, true, true);
-		Image log3 = new Image(FileNames.IMG_LOG_3, size, size, true, true);
+		Image log1 = new Image(ActorImages.IMG_LOG_1, size, size, true, true);
+		Image log2 = new Image(ActorImages.IMG_LOG_2, size, size, true, true);
+		Image log3 = new Image(ActorImages.IMG_LOG_3, size, size, true, true);
 		
 		if (logType.equals("log1")) { 
 			setImage(log1);

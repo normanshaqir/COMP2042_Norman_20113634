@@ -13,11 +13,11 @@ public class End extends Actor{
 	public End(int x, int y) {
 		setX(x);
 		setY(y);
-		setImage(new Image(FileNames.IMG_END, 60, 60, true, true)); // hole
+		setImage(new Image(ActorImages.IMG_END, 60, 60, true, true)); // hole
 	}
 	
 	public void setEnd() {
-		setImage(new Image(FileNames.IMG_END_FROG, 70, 70, true, true)); // frog in hole
+		setImage(new Image(ActorImages.IMG_END_FROG, 70, 70, true, true)); // frog in hole
 		activated = true;
 	}
 	
