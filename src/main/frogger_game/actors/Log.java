@@ -3,9 +3,7 @@ package main.frogger_game.actors;
 import javafx.scene.image.Image;
 
 public class Log extends AnimActor {
-	private int spawnPos;
-	private int leftDespawnPos;
-	private int rightDespawnPos;
+
 	
 	@Override
 	public void act(long now) {
@@ -22,6 +20,14 @@ public class Log extends AnimActor {
 	
 	public Log(String logType, int size, int xpos, int ypos, double speed) {
 		super(logType, size, size, xpos, ypos, speed);
+		
+		setRightDespawnPos(600);
+		setLeftDespawnPos(-300);
+		
+		setRightRespawnPos(-180);
+		setLeftRespawnPos(700);
+		
+		
 //		Image log1 = new Image(ActorImages.IMG_LOG_1, size, size, true, true);
 //		Image log2 = new Image(ActorImages.IMG_LOG_2, size, size, true, true);
 //		Image log3 = new Image(ActorImages.IMG_LOG_3, size, size, true, true);
@@ -34,6 +40,6 @@ public class Log extends AnimActor {
 //			setImage(log3); 
 //		}
 
-		
 	}
+	
 }

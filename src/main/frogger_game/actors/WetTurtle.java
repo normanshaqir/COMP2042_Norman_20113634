@@ -31,11 +31,7 @@ public class WetTurtle extends AnimActor{
 				}
 			
 		move(getSpeed(), 0);
-		
-		if (getX() > 600 && getSpeed() > 0)
-			setX(-200);
-		if (getX() < -75 && getSpeed() < 0)
-			setX(600);
+		despawnAndRespawnAnimActor();
 	}
 	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
 		super(ActorImages.IMG_TURTLE_2, w, h, xpos, ypos, s);
@@ -45,6 +41,11 @@ public class WetTurtle extends AnimActor{
 		turtle3 = new Image(ActorImages.IMG_WET_TURTLE_3, w, h, true, true); 
 		turtle4 = new Image(ActorImages.IMG_WET_TURTLE_4, w, h, true, true); // cycling through animations.
 		
+		setRightDespawnPos(600);
+		setLeftDespawnPos(-75);
+		
+		setRightRespawnPos(-200);
+		setLeftRespawnPos(600);
 		
 	}
 	

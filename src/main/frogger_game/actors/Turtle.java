@@ -26,11 +26,7 @@ public class Turtle extends AnimActor{
 				}
 			
 		move(getSpeed(), 0); // moves horizontally
-		
-		if (getX() > 600 && getSpeed() > 0)
-			setX(-200); // for turtles moving from left to right
-		if (getX() < -75 && getSpeed() < 0)
-			setX(600); // for turtles moving from right to left
+		despawnAndRespawnAnimActor();
 	}
 	
 	public Turtle(int xpos, int ypos, int s, int w, int h) { // on constructor call, create one instance of Turtle object
@@ -39,7 +35,13 @@ public class Turtle extends AnimActor{
 		
 		turtle1 = new Image(ActorImages.IMG_TURTLE_1, w, h, true, true);
 		turtle2 = new Image(ActorImages.IMG_TURTLE_2, w, h, true, true);
-		turtle3 = new Image(ActorImages.IMG_TURTLE_3, w, h, true, true); 
+		turtle3 = new Image(ActorImages.IMG_TURTLE_3, w, h, true, true);
+		
+		setRightDespawnPos(600);
+		setLeftDespawnPos(-75);
+		
+		setRightRespawnPos(-200);
+		setLeftRespawnPos(600);
 
 	}
 
