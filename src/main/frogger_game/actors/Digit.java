@@ -12,10 +12,8 @@ public class Digit extends Actor {
 	}
 	
 	public Digit(int n, int imgSize, int x, int y) { // constructor for images used in score
-		im1 = new Image("file:src/main/resources/digits/"+n+".png", imgSize, imgSize, true, true);
-		setImage(im1);
-		setX(x);
-		setY(y);
+		super("file:src/main/resources/digits/"+n+".png", imgSize, imgSize, x, y);
+		
 	}
 	
 }

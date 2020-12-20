@@ -12,7 +12,7 @@ import main.frogger_game.world.*;
 import main.frogger_game.actors.*;
 
 
-public class Player extends Actor { // Animal.class aka Frogger (player) deals with animating the sprite, handling collision, and player score.
+public class Player extends AnimActor { // Animal.class aka Frogger (player) deals with animating the sprite, handling collision, and player score.
 	private Image imgW1;
 	private Image imgA1;
 	private Image imgS1;
@@ -24,14 +24,18 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	
 	private int points = 0;
 	private int end = 0;
+	
 	private boolean second = false;
 	private boolean noMove = false;
-	private double movement = 13.3333333*2;
-	private double movementX = 10.666666*2;
-	private int imgSize = 40; // width and height of image - corresponds with hitbox as well
+	
+	private static final double FROGGER_MOVEMENT_Y = 13.3333333*2;
+	private static final double FROGGER_MOVEMENT_X = 10.666666*2;
+	private static final int FROGGER_IMG_SIZE = 40; // width and height of image - corresponds with hitbox as well
+	
 	private boolean carDeath = false;
 	private boolean waterDeath = false;
 	private boolean changeScore = false;
+	
 	private int carD = 0;
 	private double w = 800;
 	
@@ -40,17 +44,16 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	private static Player instance = new Player("file:src/main/resources/frogger/froggerUp.png");
 	
 	private Player (String imageLink) {
-		setImage(new Image(imageLink, imgSize, imgSize, true, true));
-		setX(300);
-		setY(679.8+movement);
-		imgW1 = new Image("file:src/main/resources/frogger/froggerUp.png", imgSize, imgSize, true, true);
-		imgA1 = new Image("file:src/main/resources/frogger/froggerLeft.png", imgSize, imgSize, true, true);
-		imgS1 = new Image("file:src/main/resources/frogger/froggerDown.png", imgSize, imgSize, true, true);
-		imgD1 = new Image("file:src/main/resources/frogger/froggerRight.png", imgSize, imgSize, true, true);
-		imgW2 = new Image("file:src/main/resources/frogger/froggerUpJump.png", imgSize, imgSize, true, true);
-		imgA2 = new Image("file:src/main/resources/frogger/froggerLeftJump.png", imgSize, imgSize, true, true);
-		imgS2 = new Image("file:src/main/resources/frogger/froggerDownJump.png", imgSize, imgSize, true, true);
-		imgD2 = new Image("file:src/main/resources/frogger/froggerRightJump.png", imgSize, imgSize, true, true);
+		super(imageLink, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, 300, (int) (679.8+FROGGER_MOVEMENT_Y));
+
+		imgW1 = new Image("file:src/main/resources/frogger/froggerUp.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgA1 = new Image("file:src/main/resources/frogger/froggerLeft.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgS1 = new Image("file:src/main/resources/frogger/froggerDown.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgD1 = new Image("file:src/main/resources/frogger/froggerRight.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgW2 = new Image("file:src/main/resources/frogger/froggerUpJump.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgA2 = new Image("file:src/main/resources/frogger/froggerLeftJump.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgS2 = new Image("file:src/main/resources/frogger/froggerDownJump.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		imgD2 = new Image("file:src/main/resources/frogger/froggerRightJump.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		
 		// images to cycle through for animation
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -61,44 +64,44 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 				else {
 				if (second) {
 					if (event.getCode() == KeyCode.W) {	  
-		                move(0, -movement);
+		                move(0, -FROGGER_MOVEMENT_Y);
 		                changeScore = false;
 		                setImage(imgW1);
 		                second = false;
 		            }
 		            else if (event.getCode() == KeyCode.A) {	            	
-		            	 move(-movementX, 0);
+		            	 move(-FROGGER_MOVEMENT_X, 0);
 		            	 setImage(imgA1);
 		            	 second = false;
 		            }
 		            else if (event.getCode() == KeyCode.S) {	            	
-		            	 move(0, movement);
+		            	 move(0, FROGGER_MOVEMENT_Y);
 		            	 setImage(imgS1);
 		            	 second = false;
 		            }
 		            else if (event.getCode() == KeyCode.D) {	            	
-		            	 move(movementX, 0);
+		            	 move(FROGGER_MOVEMENT_X, 0);
 		            	 setImage(imgD1);
 		            	 second = false;
 		            }
 				}
 				else if (event.getCode() == KeyCode.W) {	            	
-	                move(0, -movement);
+	                move(0, -FROGGER_MOVEMENT_Y);
 	                setImage(imgW2);
 	                second = true;
 	            }
 	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
+	            	 move(-FROGGER_MOVEMENT_X, 0);
 	            	 setImage(imgA2);
 	            	 second = true;
 	            }
 	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
+	            	 move(0, FROGGER_MOVEMENT_Y);
 	            	 setImage(imgS2);
 	            	 second = true;
 	            }
 	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
+	            	 move(FROGGER_MOVEMENT_X, 0);
 	            	 setImage(imgD2);
 	            	 second = true;
 	            }
@@ -115,22 +118,22 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 						w = getY(); // ensures that player cannot get points by going back and forth
 						points+=10;
 					}
-	                move(0, -movement);
+	                move(0, -FROGGER_MOVEMENT_Y);
 	                setImage(imgW1);
 	                second = false;
 	            }
 	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-movementX, 0);
+	            	 move(-FROGGER_MOVEMENT_X, 0);
 	            	 setImage(imgA1);
 	            	 second = false;
 	            }
 	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, movement);
+	            	 move(0, FROGGER_MOVEMENT_Y);
 	            	 setImage(imgS1);
 	            	 second = false;
 	            }
 	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(movementX, 0);
+	            	 move(FROGGER_MOVEMENT_X, 0);
 	            	 setImage(imgD1);
 	            	 second = false;
 	            }
@@ -148,29 +151,29 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 	@Override
 	public void act(long now) {
 		
-		Image froggerDeath = new Image("file:src/main/resources/frogger/froggerUp.png", imgSize, imgSize, true, true);
+		Image froggerDeath = new Image("file:src/main/resources/frogger/froggerUp.png", FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		
-		Image imgWaterDeath1 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath1.png", imgSize,imgSize, true, true);
-		Image imgWaterDeath2 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath2.png", imgSize,imgSize, true, true);
-		Image imgWaterDeath3 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath3.png", imgSize,imgSize, true, true);
-		Image imgWaterDeath4 = new Image("file:src/main/resources/frogger/deathAnimations/waterdeath4.png", imgSize,imgSize, true, true);
+		Image imgWaterDeath1 = new Image(FroggerImages.IMG_FROGGER_WATER_DEATH_1, FROGGER_IMG_SIZE,FROGGER_IMG_SIZE, true, true);
+		Image imgWaterDeath2 = new Image(FroggerImages.IMG_FROGGER_WATER_DEATH_2, FROGGER_IMG_SIZE,FROGGER_IMG_SIZE, true, true);
+		Image imgWaterDeath3 = new Image(FroggerImages.IMG_FROGGER_WATER_DEATH_3, FROGGER_IMG_SIZE,FROGGER_IMG_SIZE, true, true);
+		Image imgWaterDeath4 = new Image(FroggerImages.IMG_FROGGER_WATER_DEATH_4, FROGGER_IMG_SIZE,FROGGER_IMG_SIZE, true, true);
 		
-		Image imgCarDeath1 = new Image("file:src/main/resources/frogger/deathAnimations/cardeath1.png", imgSize, imgSize, true, true);
-		Image imgCarDeath2 = new Image("file:src/main/resources/frogger/deathAnimations/cardeath2.png", imgSize, imgSize, true, true);
-		Image imgCarDeath3 = new Image("file:src/main/resources/frogger/deathAnimations/cardeath3.png", imgSize, imgSize, true, true);
+		Image imgCarDeath1 = new Image(FroggerImages.IMG_FROGGER_CAR_DEATH_1, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		Image imgCarDeath2 = new Image(FroggerImages.IMG_FROGGER_CAR_DEATH_2, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
+		Image imgCarDeath3 = new Image(FroggerImages.IMG_FROGGER_CAR_DEATH_3, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		
 		if (getY()>734) { // prevents player from going out of y bounds
 			//setX(300);
 			//setY(679.8+movement);
-			move(0, -movement);
+			move(0, -FROGGER_MOVEMENT_Y);
 		}
 		
 		if (getX()<0) { // prevents player from going out of bounds
-			move(movement, 0);
+			move(FROGGER_MOVEMENT_Y, 0);
 		}
 		
 		if (getX()>600) { // prevents player from going out of X bounds
-			move(-movement, 0);
+			move(-FROGGER_MOVEMENT_Y, 0);
 		}
 		
 		if (carDeath) { // cycling through death animation when collide with car/truck
@@ -190,7 +193,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 			if (carD == 4) { // after three cycles of animation, move frogger back to spawn
 				setImage(froggerDeath);
 				setX(300);
-				setY(679.8+movement);
+				setY(679.8+FROGGER_MOVEMENT_Y);
 				carDeath = false;
 				carD = 0;
 				
@@ -222,7 +225,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 			}
 			if (carD == 5) { // after three cycles of animation, move frogger back to spawn
 				setX(300);
-				setY(679.8+movement);
+				setY(679.8+FROGGER_MOVEMENT_Y);
 				waterDeath = false;
 				carD = 0;
 				setImage(froggerDeath);
@@ -255,8 +258,10 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { // similar to Turtle class, except for isSunk
 			if (getOneIntersectingObject(WetTurtle.class).isSunk()) {
 				waterDeath = true; // trigger waterDeath if isSunk returns true
+				
 			} else {
 				move(getOneIntersectingObject(WetTurtle.class).getSpeed(), 0); // move left
+				
 			}
 			
 		}
@@ -276,7 +281,7 @@ public class Player extends Actor { // Animal.class aka Frogger (player) deals w
 			end++; // increment end, end == 5 triggers game over screen
 			
 			setX(300);
-			setY(679.8+movement); // move player back to spawn
+			setY(679.8+FROGGER_MOVEMENT_Y); // move player back to spawn
 		}
 		else if (getY()<413) { // if player collides/falls into water
 			waterDeath = true;

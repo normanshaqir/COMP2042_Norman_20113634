@@ -21,6 +21,7 @@ public class Main extends Application {
 	AnimationTimer timer;
 	MyStage background;
 	Player player;
+	
 	public static void main(String[] args) {
 		launch(args);
 	}
@@ -34,16 +35,16 @@ public class Main extends Application {
 	    
 		background.add(froggerback);
 		
-		background.add(new Log("log3", 150, 0, 166,  0.75)); 
-		background.add(new Log("log3", 150, 220, 166,  0.75));
-		background.add(new Log("log3", 150, 440, 166,  0.75));
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 0, 166,  0.75)); 
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 220, 166,  0.75));
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 440, 166,  0.75));
 
-		background.add(new Log("log1", 300, 0, 276, -2));
-		background.add(new Log("log1", 300, 400, 276, -2));
+		background.add(new Log(ActorImages.IMG_LOG_1, 300, 0, 276, -2));
+		background.add(new Log(ActorImages.IMG_LOG_1, 300, 400, 276, -2));
 		
-		background.add(new Log("log3", 150, 50, 329, 0.75));
-		background.add(new Log("log3", 150, 270, 329, 0.75));
-		background.add(new Log("log3", 150, 490, 329, 0.75));
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 50, 329, 0.75));
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 270, 329, 0.75));
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 490, 329, 0.75));
 		
 		background.add(new Turtle(500, 376, -1, 130, 130));
 		background.add(new Turtle(300, 376, -1, 130, 130)); // create two turtles that never submerge (dry turtles)
@@ -60,16 +61,16 @@ public class Main extends Application {
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
 		player = Player.getInstance();
 		background.add(player);
-		background.add(new Truck("truck1Right", 0, 649, 1, 120, 120));
-		background.add(new Truck("truck1Right", 300, 649, 1, 120, 120));
-		background.add(new Truck("truck1Right", 600, 649, 1, 120, 120));
-		background.add(new Car("car1Left", 100, 597, -1, 50, 50));
-		background.add(new Car("car1Left", 250, 597, -1, 50, 50));
-		background.add(new Car("car1Left", 400, 597, -1, 50, 50));
-		background.add(new Car("car1Left", 550, 597, -1, 50, 50));
-		background.add(new Truck("truck2Right", 0, 540, 1, 200, 200));
-		background.add(new Truck("truck2Right", 500, 540, 1, 200, 200));
-		background.add(new Car("car1Left", 500, 490, -5, 50, 50));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120,  0, 649, 1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120, 300, 649, 1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120, 600, 649, 1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50,  100, 597, -1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 250, 597, -1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 400, 597, -1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50,550, 597, -1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_2, 200, 200, 0, 540, 1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_2, 200, 200, 500, 540, 1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 500, 490, -5));
 		background.add(new Digit(0, 30, 360, 25));
 
 		background.start();

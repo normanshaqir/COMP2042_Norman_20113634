@@ -5,15 +5,9 @@ import javafx.scene.image.Image;
 
 public class End extends Actor{
 	private boolean activated = false;
-	@Override
-	public void act(long now) {
-		// TODO Auto-generated method st
-	}
 	
 	public End(int x, int y) {
-		setX(x);
-		setY(y);
-		setImage(new Image(ActorImages.IMG_END, 60, 60, true, true)); // hole
+		super(ActorImages.IMG_END, 60, 60, x, y); // hole
 	}
 	
 	public void setEnd() {

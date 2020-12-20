@@ -1,5 +1,6 @@
 package main.frogger_game.actors;
 
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.InputEvent;
  
@@ -8,8 +9,13 @@ import java.util.ArrayList;
 
 import main.frogger_game.world.*;
 
-public abstract class Actor extends ImageView{
-	protected ActorImages FileNames = new ActorImages();
+public class Actor extends ImageView{
+	
+	public Actor (String imageType, int w, int h, int xpos, int ypos) {
+		setImage(new Image(imageType, w, h, true, true));
+		setX(xpos);
+		setY(ypos);
+	}
 	
     public void move(double dx, double dy) { // moves all actors/sprites by getting current coordinates and adding speed. 
         setX(getX() + dx);
@@ -47,6 +53,5 @@ public abstract class Actor extends ImageView{
         
     }
 
-    public abstract void act(long now);
 
 }

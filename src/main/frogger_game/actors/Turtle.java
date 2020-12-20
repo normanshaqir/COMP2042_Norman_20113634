@@ -2,13 +2,13 @@ package main.frogger_game.actors;
 
 import javafx.scene.image.Image;
 
-public class Turtle extends Actor{
+public class Turtle extends AnimActor{
 	private Image turtle1;
 	private Image turtle2;
 	private Image turtle3;
-	private int speed;
+
 	int i = 1;
-	private boolean bool = true;
+
 	
 	@Override
 	public void act(long now) {
@@ -26,31 +26,22 @@ public class Turtle extends Actor{
 					
 				}
 			
-		move(speed , 0); // moves horizontally
+		move(getSpeed(), 0); // moves horizontally
 		
-		if (getX() > 600 && speed>0)
+		if (getX() > 600 && getSpeed() > 0)
 			setX(-200); // for turtles moving from left to right
-		if (getX() < -75 && speed<0)
+		if (getX() < -75 && getSpeed() < 0)
 			setX(600); // for turtles moving from right to left
 	}
 	
 	public Turtle(int xpos, int ypos, int s, int w, int h) { // on constructor call, create one instance of Turtle object
 															// with images to cycle through for animation
+		super(ActorImages.IMG_TURTLE_2, w, h, xpos, ypos, s);
+		
 		turtle1 = new Image(ActorImages.IMG_TURTLE_1, w, h, true, true);
 		turtle2 = new Image(ActorImages.IMG_TURTLE_2, w, h, true, true);
 		turtle3 = new Image(ActorImages.IMG_TURTLE_3, w, h, true, true); 
-		
-		setX(xpos);
-		setY(ypos);
-		speed = s;
-		setImage(turtle2);
+
 	}
 
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
 }

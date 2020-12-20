@@ -16,6 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import main.frogger_game.actors.Actor;
+import main.frogger_game.actors.AnimActor;
 
 
 public abstract class World extends Pane {
@@ -71,9 +72,9 @@ public abstract class World extends Pane {
             @Override
             public void handle(long now) {
                 act(now);
-                List<Actor> actors = getObjects(Actor.class);
+                List<AnimActor> actors = getObjects(AnimActor.class);
                 
-                for (Actor anActor: actors) {
+                for (AnimActor anActor: actors) {
                 	anActor.act(now);
                 }
       

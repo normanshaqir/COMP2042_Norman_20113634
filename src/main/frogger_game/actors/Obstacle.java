@@ -1,32 +1,22 @@
 package main.frogger_game.actors;
 
-public class Obstacle extends Actor {
-	private int speed;
+public class Obstacle extends AnimActor {
+	
+	public Obstacle(String imageType, int w, int h, int xpos, int ypos, int s) { // standard constructor for classes extending Actor
+		super(imageType, w, h, xpos, ypos, s);
+	}
+	
 	
 	@Override
 	public void act(long now) {
-		move(speed , 0); // moves horizontally
+		move(getSpeed() , 0); // moves horizontally
 		
 		// move Obstacle (car/trucks) back to spawn point
-		if (getX() > 600 && speed>0) // for obstacles moving from left to right
+		if (getX() > 600 && getSpeed()>0) // for obstacles moving from left to right
 			setX(-200); 
 		
-		if (getX() < -50 && speed<0) // for obstacles moving from right to left
+		if (getX() < -50 && getSpeed()<0) // for obstacles moving from right to left
 			setX(600);
 	}
 	
-	public Obstacle(int xpos, int ypos, int s, int w, int h) { // standard constructor for classes extending Actor
-		setX(xpos);
-		setY(ypos);
-		speed = s;
-	}
-
-	public int getSpeed() {
-		return speed;
-	}
-
-	public void setSpeed(int speed) {
-		this.speed = speed;
-	}
-
 }
