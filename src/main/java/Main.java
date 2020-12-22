@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import actors.*;
 import world.*;
 import constants.*;
+import highScore.HighScoreManager;
 
 public class Main extends Application {
 	AnimationTimer timer;
@@ -23,6 +24,15 @@ public class Main extends Application {
 	public void start(Stage primaryStage) throws Exception { // Stage -> Scene -> Scene Graph. Stage is the window/container for a scene.
 	    background = new MyStage();
 	    Scene scene  = new Scene(background,600,800);
+	    
+//	    HighScoreManager hm = new HighScoreManager();
+//        hm.addScore("Astaga",player.getPoints());
+//        hm.addScore("Marge",300);
+//        hm.addScore("Maggie",220);
+//        hm.addScore("Homer",100);
+//        hm.addScore("Lisa",270);
+
+        
 	    
 		BackgroundImage froggerback = new BackgroundImage("file:src/main/resources/misc/background.png");
 	    
@@ -54,16 +64,16 @@ public class Main extends Application {
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
 		player = Player.getInstance();
 		background.add(player);
-		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120,  0, 649, 1));
-		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120, 300, 649, 1));
-		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120, 600, 649, 1));
-		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50,  100, 597, -1));
-		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 250, 597, -1));
-		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 400, 597, -1));
-		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50,550, 597, -1));
-		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_2, 200, 200, 0, 540, 1));
-		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_2, 200, 200, 500, 540, 1));
-		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 500, 490, -5));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120,  0, 657, 1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120, 300, 657, 1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_1, 120, 120, 600, 657, 1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50,  100, 605, -1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 250, 605, -1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 400, 605, -1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50,550, 605, -1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_2, 200, 200, 0, 548, 1));
+		background.add(new Truck(ActorImages.IMG_TRUCK_RIGHT_2, 200, 200, 500, 548, 1));
+		background.add(new Car(ActorImages.IMG_CAR_LEFT_1, 50, 50, 500, 496, -5));
 		background.add(new Digit(0, 30, 360, 25));
 
 		background.start();
@@ -104,6 +114,9 @@ public class Main extends Application {
 	
 	@Override
     public void stop() { // GAME END (stop animationtimer)
+		HighScoreManager hm = new HighScoreManager();
+	    hm.addScore("Astaga",player.getPoints());
+	    System.out.print(hm.getHighscoreString());
         timer.stop();
     }
     
