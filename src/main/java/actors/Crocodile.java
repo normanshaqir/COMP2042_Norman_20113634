@@ -12,6 +12,12 @@ public class Crocodile extends MovingActor implements AnimatedActor {
 	
 	public Crocodile (int w, int h, int xpos, int ypos, double s) {
 		super("file:src/main/resources/crocodiles/crocodile1.PNG", w, h, xpos, ypos, s);
+		
+		setRightDespawnPos(600);
+		setLeftDespawnPos(-300);
+		
+		setRightRespawnPos(-180);
+		setLeftRespawnPos(700);
 	}
 
 
@@ -20,12 +26,6 @@ public class Crocodile extends MovingActor implements AnimatedActor {
 		animateActor(now);
 		move(getSpeed(), 0);
 		despawnAndRespawnAnimActor();
-		
-		setRightDespawnPos(600);
-		setLeftDespawnPos(-75);
-		
-		setRightRespawnPos(-200);
-		setLeftRespawnPos(600);
 		
 	}
 	

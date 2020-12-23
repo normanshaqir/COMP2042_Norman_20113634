@@ -45,10 +45,10 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 	
 	private ArrayList<End> inter;
 	
-	private static Player instance = new Player("file:src/main/resources/frogger/froggerUp.png");
+	private static Player instance = new Player();
 	
-	private Player (String filename) {
-		super(filename, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, 300, (int) (679.8+FROGGER_MOVEMENT_Y));
+	private Player () {
+		super(FroggerImages.IMG_FROGGER_UP, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, 300, (int) (679.8+FROGGER_MOVEMENT_Y));
 
 		imgW1 = new Image(FroggerImages.IMG_FROGGER_UP, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		imgA1 = new Image(FroggerImages.IMG_FROGGER_LEFT, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
@@ -150,23 +150,24 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 					}
 	                move(0, -FROGGER_MOVEMENT_Y);
 	                setImage(imgW1);
-	                second = false;
+
 	            }
 	            else if (event.getCode() == KeyCode.A) {	            	
 	            	 move(-FROGGER_MOVEMENT_X, 0);
 	            	 setImage(imgA1);
-	            	 second = false;
+
 	            }
 	            else if (event.getCode() == KeyCode.S) {	            	
 	            	 move(0, FROGGER_MOVEMENT_Y);
 	            	 setImage(imgS1);
-	            	 second = false;
+
 	            }
 	            else if (event.getCode() == KeyCode.D) {	            	
 	            	 move(FROGGER_MOVEMENT_X, 0);
 	            	 setImage(imgD1);
-	            	 second = false;
+
 	            }
+				second = false;
 	        }
 			}
 			
