@@ -16,7 +16,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 
 import actors.Actor;
-import actors.AnimActor;
+import actors.MovingActor;
 
 
 public class World extends Pane {
@@ -71,9 +71,9 @@ public class World extends Pane {
         timer = new AnimationTimer() { // creates a List containing all Actors and calls act method
             @Override
             public void handle(long now) {
-                List<AnimActor> actors = getObjects(AnimActor.class);
+                List<MovingActor> actors = getObjects(MovingActor.class);
                 
-                for (AnimActor anActor: actors) {
+                for (MovingActor anActor: actors) {
                 	anActor.act(now);
                 }
       

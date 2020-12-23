@@ -12,7 +12,7 @@ import javafx.scene.input.KeyEvent;
 import constants.*;
 
 
-public class Player extends AnimActor { // Animal.class aka Frogger (player) deals with animating the sprite, handling collision, and player score.
+public class Player extends MovingActor { // Animal.class aka Frogger (player) deals with animating the sprite, handling collision, and player score.
 	private Image imgW1;
 	private Image imgA1;
 	private Image imgS1;
@@ -24,7 +24,8 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 	private Image imgD2; // images to cycle through for animation
 	
 	private int points = 0;
-	private int end = 0;
+	private int lives = 5;
+	private int numberOfEndsActivated = 0;
 	
 	private boolean second = false;
 	private boolean noMove = false;
@@ -32,6 +33,8 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 	private static final double FROGGER_MOVEMENT_Y = 13.3333333*2;
 	private static final double FROGGER_MOVEMENT_X = 10.666666*2;
 	private static final int FROGGER_IMG_SIZE = 40; // width and height of image - corresponds with hitbox as well
+	
+	private static final int WATER = 413;
 	
 	private boolean carDeath = false;
 	private boolean waterDeath = false;
@@ -44,8 +47,8 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 	
 	private static Player instance = new Player("file:src/main/resources/frogger/froggerUp.png");
 	
-	private Player (String imageLink) {
-		super(imageLink, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, 300, (int) (679.8+FROGGER_MOVEMENT_Y));
+	private Player (String filename) {
+		super(filename, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, 300, (int) (679.8+FROGGER_MOVEMENT_Y));
 
 		imgW1 = new Image(FroggerImages.IMG_FROGGER_UP, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		imgA1 = new Image(FroggerImages.IMG_FROGGER_LEFT, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
@@ -64,8 +67,12 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 	@Override
 	public void act(long now) {
 		preventPlayerFromGoingOutOfBounds();
-		checkForCollisionWithMobs();
+		handleCollisionWithMobs();
 		handleDeathFlags(now);
+		
+		if (getLives() == 0) {
+			System.exit(0);
+		}
 		
 	}
 	
@@ -176,7 +183,7 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 		}
 	}
 	
-	public void checkForCollisionWithMobs() {
+	public void handleCollisionWithMobs() {
 		if (getIntersectingObjects(Obstacle.class).size() >= 1) { // check for collision, if yes trigger carDeath animation and move to spawn
 			carDeath = true;
 			
@@ -189,6 +196,13 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 		else if (getIntersectingObjects(DryTurtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle
 			move(getOneIntersectingObject(DryTurtle.class).getSpeed(),0); // move left (all turtles move to the left)
 			
+		}
+		else if (getIntersectingObjects(Crocodile.class).size() >= 1) {
+			if (getOneIntersectingObject(Crocodile.class).isMouthOpen()) {
+				waterDeath = true;
+			} else {
+				move(getOneIntersectingObject(Crocodile.class).getSpeed(), 0);
+			}
 		}
 		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { // similar to Turtle class, except for isSunk
 			if (getOneIntersectingObject(WetTurtle.class).isSunk()) {
@@ -204,7 +218,7 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 			inter = (ArrayList<End>) getIntersectingObjects(End.class); // TODO: modify how score is updated. Currently returns a new ArrayList everytime.
 			
 			if (getOneIntersectingObject(End.class).isActivated()) { // if player collides with frog in hole, deduct points
-				end--;
+				numberOfEndsActivated--;
 				points-=50;
 			}
 			
@@ -213,12 +227,12 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 			distanceLeftTillEnd = 800;
 			
 			getOneIntersectingObject(End.class).setEnd(); // put frog in hole
-			end++; // increment end, end == 5 triggers game over screen
+			numberOfEndsActivated++; // increment end, end == 5 triggers game over screen
 			
 			setX(300);
 			setY(679.8+FROGGER_MOVEMENT_Y); // move player back to spawn
 		}
-		else if (getY()<413) { // if player collides/falls into water
+		else if (getY()<WATER) { // if player collides/falls into water
 			waterDeath = true;
 
 		}
@@ -236,7 +250,7 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 		Image imgCarDeath2 = new Image(FroggerImages.IMG_FROGGER_CAR_DEATH_2, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		Image imgCarDeath3 = new Image(FroggerImages.IMG_FROGGER_CAR_DEATH_3, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
 		
-		if (carDeath) { // cycling through death animation when collide with car/truck
+		if (carDeath) { // cycling through death animation when collide with car/truck		
 			noMove = true; // now determines how quickly animations are cycled through (higher = slower)
 			if ((now)% 11 ==0) { //
 				carD++;
@@ -263,10 +277,14 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 					points-=50;
 					changeScore = true; // if player dies, deduct score.
 				}
+				
+				if (lives > 0) {
+					lives--;
+				}
 			}
 			
 		} // now determines how quickly animations are cycled through (higher = slower)
-		if (waterDeath) { // cycling through death animation when collide fall into water in second half 
+		if (waterDeath) { // cycling through death animation when collide fall into water in second half 		
 			noMove = true;
 			if ((now)% 11 ==0) {
 				carD++;
@@ -295,6 +313,10 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 					points-=50;
 					changeScore = true; // if player dies, deduct score.
 				}
+				
+				if (lives > 0) {
+					lives--;
+				}
 			}
 			
 		}
@@ -305,7 +327,7 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 	}
 	
 	public boolean getStop() { // game over function, called when all five holes are filled with frogs
-		return end==5;
+		return numberOfEndsActivated == 5;
 	}
 	
 	public int getPoints() { // for use in displaying score
@@ -321,5 +343,8 @@ public class Player extends AnimActor { // Animal.class aka Frogger (player) dea
 		
 	}
 	
+	public int getLives() {
+		return lives;
+	}	
 
 }

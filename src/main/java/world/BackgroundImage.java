@@ -5,8 +5,8 @@ import actors.Actor;
 
 public class BackgroundImage extends Actor {
 
-	public BackgroundImage(String imageLink) {
-		super(imageLink, 600, 800, 0, 0);
+	public BackgroundImage(String filename) {
+		super(filename, 600, 800, 0, 0);
 		
 	}
 

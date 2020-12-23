@@ -1,8 +1,6 @@
 package actors;
 
-import javafx.scene.image.Image;
-
-public class Log extends AnimActor {
+public class Log extends MovingActor {
 
 	@Override
 	public void act(long now) {
@@ -17,8 +15,8 @@ public class Log extends AnimActor {
 		
 	}
 	
-	public Log(String logType, int size, int xpos, int ypos, double speed) {
-		super(logType, size, size, xpos, ypos, speed);
+	public Log(String filename, int size, int xpos, int ypos, double speed) {
+		super(filename, size, size, xpos, ypos, speed);
 		
 		setRightDespawnPos(600);
 		setLeftDespawnPos(-300);

@@ -1,6 +1,6 @@
 package actors;
 
-public abstract class AnimActor extends Actor {
+public abstract class MovingActor extends Actor {
 	private double speed;
 	
 	private int leftDespawnPos;
@@ -9,14 +9,14 @@ public abstract class AnimActor extends Actor {
 	private int leftRespawnPos;
 	private int rightRespawnPos;
 	
-	public AnimActor(String imageType, int w, int h, int xpos, int ypos, double s) {
-		this(imageType, w, h, xpos, ypos);
+	public MovingActor(String filename, int w, int h, int xpos, int ypos, double s) {
+		this(filename, w, h, xpos, ypos);
 		this.speed = s;
 		
 	}
 	
-	public AnimActor(String imageType, int w, int h, int xpos, int ypos) {
-		super(imageType, w, h, xpos, ypos);
+	public MovingActor(String filename, int w, int h, int xpos, int ypos) {
+		super(filename, w, h, xpos, ypos);
 	}
 	
 	public void despawnAndRespawnAnimActor() {

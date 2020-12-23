@@ -1,7 +1,5 @@
 package actors;
 
-import javafx.scene.image.Image;
-
 public class Digit extends Actor {
 	
 	public Digit(int n, int imgSize, int x, int y) { // constructor for images used in score

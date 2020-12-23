@@ -33,4 +33,10 @@ public class ActorImages {
 	public static final String IMG_TRUCK_LEFT_2 = "file:src/main/resources/obstacles/truck2Left.png";
 	public static final String IMG_TRUCK_RIGHT_2 = "file:src/main/resources/obstacles/truck2Right.png";
 	
+	// Crocodile
+	public static final String IMG_CROCODILE_1 = "file:src/main/resources/crocodiles/crocodile1.PNG";
+	public static final String IMG_CROCODILE_2 = "file:src/main/resources/crocodiles/crocodile2.PNG";
+	public static final String IMG_CROCODILE_3 = "file:src/main/resources/crocodiles/crocodile3.PNG";
+
+	
 }

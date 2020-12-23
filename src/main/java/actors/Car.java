@@ -1,11 +1,9 @@
 package actors;
 
-import javafx.scene.image.Image;
-
 public class Car extends Obstacle {
 	
-	public Car (String obstacleType, int w, int h, int xpos, int ypos, int s) {
-		super(obstacleType, w, h, xpos, ypos, s);
+	public Car (String filename, int w, int h, int xpos, int ypos, int s) {
+		super(filename, w, h, xpos, ypos, s);
 		
 //		Image car1Left = new Image(ActorImages.IMG_CAR_LEFT_1, w, h, true, true);
 //		Image car1Right = new Image(ActorImages.IMG_CAR_RIGHT_1, w, h, true, true);

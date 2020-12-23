@@ -4,7 +4,7 @@ import javafx.scene.image.Image;
 
 import constants.*;
 
-public class WetTurtle extends AnimActor{
+public class WetTurtle extends MovingActor implements AnimatedActor {
 	private Image turtle1 = new Image(ActorImages.IMG_WET_TURTLE_1, getWidth(), getHeight(), true, true);
 	private Image turtle2 = new Image(ActorImages.IMG_WET_TURTLE_2, getWidth(), getHeight(), true, true);;
 	private Image turtle3 = new Image(ActorImages.IMG_WET_TURTLE_3, getWidth(), getHeight(), true, true);;
@@ -15,12 +15,12 @@ public class WetTurtle extends AnimActor{
 	@Override
 	public void act (long now) {
 		
-		animateTurtle(now);
+		animateActor(now);
 		move(getSpeed(), 0);
 		despawnAndRespawnAnimActor();
 	}
 	
-	public WetTurtle(int xpos, int ypos, int s, int w, int h) {
+	public WetTurtle(int w, int h, int xpos, int ypos, int s) {
 		super(ActorImages.IMG_TURTLE_2, w, h, xpos, ypos, s);
 		
 		setRightDespawnPos(600);
@@ -31,23 +31,23 @@ public class WetTurtle extends AnimActor{
 		
 	}
 	
-	public void animateTurtle(long now) {
-		if (now/900000000  % 4 ==0) {
+	public void animateActor(long now) {
+		sunk = false;
+		
+		if (now/900000000  % 4 == 0) {
 			setImage(turtle2);
-			sunk = false;
 			
 		} else if (now/900000000 % 4 == 1) {
 			setImage(turtle1);
-			sunk = false;
 			
 		} else if (now/900000000 % 4 == 2) {
 			setImage(turtle3);
-			sunk = false;
 			
 		} else if (now/900000000 % 4 == 3) {
 			setImage(turtle4);
 			sunk = true;
 		}
+		
 	}
 	
 	public boolean isSunk() {

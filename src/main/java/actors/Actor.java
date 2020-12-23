@@ -11,8 +11,8 @@ import world.*;
 
 public class Actor extends ImageView{
 	
-	public Actor (String imageType, int w, int h, int xpos, int ypos) {
-		setImage(new Image(imageType, w, h, true, true));
+	public Actor (String filename, int w, int h, int xpos, int ypos) {
+		setImage(new Image(filename, w, h, true, true));
 		setX(xpos);
 		setY(ypos);
 	}

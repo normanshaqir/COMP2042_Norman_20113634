@@ -13,7 +13,7 @@ import highScore.HighScoreManager;
 
 public class Main extends Application {
 	AnimationTimer timer;
-	MyStage background;
+	MusicPlayer background;
 	Player player;
 	
 	public static void main(String[] args) {
@@ -22,7 +22,7 @@ public class Main extends Application {
 
 	@Override 
 	public void start(Stage primaryStage) throws Exception { // Stage -> Scene -> Scene Graph. Stage is the window/container for a scene.
-	    background = new MyStage();
+	    background = new MusicPlayer();
 	    Scene scene  = new Scene(background,600,800);
 	    
 //	    HighScoreManager hm = new HighScoreManager();
@@ -39,23 +39,24 @@ public class Main extends Application {
 		background.add(froggerback);
 		
 		background.add(new Log(ActorImages.IMG_LOG_3, 150, 0, 166,  0.75)); 
-		background.add(new Log(ActorImages.IMG_LOG_3, 150, 220, 166,  0.75));
+		background.add(new Log(ActorImages.IMG_LOG_3, 150, 220, 166, 0.75));
 		background.add(new Log(ActorImages.IMG_LOG_3, 150, 440, 166,  0.75));
 
 		background.add(new Log(ActorImages.IMG_LOG_1, 300, 0, 276, -2));
 		background.add(new Log(ActorImages.IMG_LOG_1, 300, 400, 276, -2));
 		
-		background.add(new Log(ActorImages.IMG_LOG_3, 150, 50, 329, 0.75));
+		//background.add(new Log(ActorImages.IMG_LOG_3, 150, 50, 329, 0.75));
+		background.add(new Crocodile(140, 140, 50, 329, 0.75));
 		background.add(new Log(ActorImages.IMG_LOG_3, 150, 270, 329, 0.75));
 		background.add(new Log(ActorImages.IMG_LOG_3, 150, 490, 329, 0.75));
 		
-		background.add(new DryTurtle(500, 376, -1, 130, 130));
-		background.add(new DryTurtle(300, 376, -1, 130, 130)); // create two turtles that never submerge (dry turtles)
+		background.add(new DryTurtle(130, 130, 500, 376, -1));
+		background.add(new DryTurtle(130, 130, 300, 376, -1)); // create two turtles that never submerge (dry turtles)
 		
-		background.add(new WetTurtle(700, 376, -1, 130, 130));
-		background.add(new WetTurtle(600, 217, -1, 130, 130)); 
-		background.add(new WetTurtle(400, 217, -1, 130, 130));
-		background.add(new WetTurtle(200, 217, -1, 130, 130)); // create four turtles that submerge (wet turtles)
+		background.add(new WetTurtle(130, 130, 700, 376, -1));
+		background.add(new WetTurtle(130, 130, 600, 217, -1)); 
+		background.add(new WetTurtle(130, 130, 400, 217, -1));
+		background.add(new WetTurtle(130, 130, 200, 217, -1)); // create four turtles that submerge (wet turtles)
 
 		background.add(new End(13,96)); // End represent the boxes at the end of the map
 		background.add(new End(141,96));

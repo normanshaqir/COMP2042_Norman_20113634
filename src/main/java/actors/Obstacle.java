@@ -1,6 +1,6 @@
 package actors;
 
-public class Obstacle extends AnimActor {
+public class Obstacle extends MovingActor {
 	
 	@Override
 	public void act(long now) {
@@ -9,8 +9,8 @@ public class Obstacle extends AnimActor {
 		
 	}
 	
-	public Obstacle(String imageType, int w, int h, int xpos, int ypos, int s) { // standard constructor for classes extending Actor
-		super(imageType, w, h, xpos, ypos, s);
+	public Obstacle(String filename, int w, int h, int xpos, int ypos, int s) { // standard constructor for classes extending Actor
+		super(filename, w, h, xpos, ypos, s);
 		setRightDespawnPos(600);
 		setLeftDespawnPos(-50);
 		
