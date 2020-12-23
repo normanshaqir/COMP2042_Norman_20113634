@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" 
-    fx:controller="fxml.mainMenuController" stylesheets="@display.css">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" stylesheets="@display.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.mainMenuController">
    <children>
             <ImageView fitHeight="800.0" fitWidth="600.0">
                <image>
@@ -18,13 +17,18 @@
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font></Button>
-            <Button fx:id="infoButton" layoutX="237.0" layoutY="371.0" mnemonicParsing="false" onAction="#handleInfoButtonPressed" prefHeight="58.0" prefWidth="126.0" text="INFO">
+            <Button fx:id="infoButton" layoutX="210.0" layoutY="390.0" mnemonicParsing="false" onAction="#handleInfoButtonPressed" prefHeight="58.0" prefWidth="181.0" text="HOW TO PLAY">
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font></Button>
-            <Button fx:id="quitButton" layoutX="237.0" layoutY="468.0" mnemonicParsing="false" onAction="#handleQuitButtonPressed" prefHeight="58.0" prefWidth="126.0" text="QUIT">
+            <Button fx:id="quitButton" layoutX="237.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleQuitButtonPressed" prefHeight="58.0" prefWidth="126.0" text="QUIT">
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font></Button>
+      <Button fx:id="highScoreButton" layoutX="210.0" layoutY="342.0" mnemonicParsing="false" onAction="#handleHighScoreButtonPressed" prefHeight="58.0" prefWidth="181.0" text="HIGH SCORES">
+         <font>
+            <Font name="Roboto Regular" size="18.0" />
+         </font>
+      </Button>
          </children>
 </AnchorPane>

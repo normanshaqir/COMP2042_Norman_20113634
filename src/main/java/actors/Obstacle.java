@@ -9,7 +9,7 @@ public class Obstacle extends MovingActor {
 		
 	}
 	
-	public Obstacle(String filename, int w, int h, int xpos, int ypos, int s) { // standard constructor for classes extending Actor
+	public Obstacle(String filename, int w, int h, int xpos, int ypos, double s) { // standard constructor for classes extending Actor
 		super(filename, w, h, xpos, ypos, s);
 		setRightDespawnPos(600);
 		setLeftDespawnPos(-50);
