@@ -84,48 +84,54 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 				}
 				else {
 				if (second) {
+					second = false;
 					if (event.getCode() == KeyCode.W) {	  
 		                move(0, -FROGGER_MOVEMENT_Y);
 		                changeScore = false;
 		                setImage(imgW1);
-		                second = false;
+		                
 		            }
 		            else if (event.getCode() == KeyCode.A) {	            	
 		            	 move(-FROGGER_MOVEMENT_X, 0);
 		            	 setImage(imgA1);
-		            	 second = false;
+		            	 
 		            }
 		            else if (event.getCode() == KeyCode.S) {	            	
 		            	 move(0, FROGGER_MOVEMENT_Y);
 		            	 setImage(imgS1);
-		            	 second = false;
+
 		            }
 		            else if (event.getCode() == KeyCode.D) {	            	
 		            	 move(FROGGER_MOVEMENT_X, 0);
 		            	 setImage(imgD1);
-		            	 second = false;
+
+		            }
+				} else {
+					second = true;
+					
+					if (event.getCode() == KeyCode.W) {	            	
+		                move(0, -FROGGER_MOVEMENT_Y);
+		                setImage(imgW2);
+		                
+		            }
+		            else if (event.getCode() == KeyCode.A) {	            	
+		            	 move(-FROGGER_MOVEMENT_X, 0);
+		            	 setImage(imgA2);
+
+		            }
+		            else if (event.getCode() == KeyCode.S) {	            	
+		            	 move(0, FROGGER_MOVEMENT_Y);
+		            	 setImage(imgS2);
+
+		            }
+		            else if (event.getCode() == KeyCode.D) {	            	
+		            	 move(FROGGER_MOVEMENT_X, 0);
+		            	 setImage(imgD2);
+
 		            }
 				}
-				else if (event.getCode() == KeyCode.W) {	            	
-	                move(0, -FROGGER_MOVEMENT_Y);
-	                setImage(imgW2);
-	                second = true;
-	            }
-	            else if (event.getCode() == KeyCode.A) {	            	
-	            	 move(-FROGGER_MOVEMENT_X, 0);
-	            	 setImage(imgA2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.S) {	            	
-	            	 move(0, FROGGER_MOVEMENT_Y);
-	            	 setImage(imgS2);
-	            	 second = true;
-	            }
-	            else if (event.getCode() == KeyCode.D) {	            	
-	            	 move(FROGGER_MOVEMENT_X, 0);
-	            	 setImage(imgD2);
-	            	 second = true;
-	            }
+				
+				
 	        }
 			}
 		});	
