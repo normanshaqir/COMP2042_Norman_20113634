@@ -1,7 +1,8 @@
 package actorFactory;
 
-import actors.Actor;
+import models.Actor;
 
 public interface AbstractActorFactory {
-	Actor createActor(String name, int xpos, int ypos, double speed);
+	Actor createActor(String name, int w, int h, int xpos, int ypos, double speed);
+	
 }

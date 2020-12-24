@@ -54,7 +54,7 @@
       <configuration>
         <archive>
           <manifest>
-            <mainClass>main.frogger_game.Main</mainClass>
+            <mainClass>Main</mainClass>
           </manifest>
         </archive>
         <descriptorRefs>

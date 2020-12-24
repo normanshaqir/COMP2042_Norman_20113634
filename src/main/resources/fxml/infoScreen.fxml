@@ -6,15 +6,14 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane fx:controller="application.infoScreenController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" stylesheets="@../styling/display.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.infoScreenController">
    <children>
       <ImageView fitHeight="806.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@infoScreen.png" />
+            <Image url="@../misc/infoScreen.png" />
          </image>
       </ImageView>
-      <Button fx:id="backButton" layoutX="260.0" layoutY="716.0" mnemonicParsing="false" onAction="#handleBackButtonPressed" prefHeight="36.0" prefWidth="80.0" text="BACK">
+      <Button fx:id="backButton" layoutX="182.0" layoutY="686.0" mnemonicParsing="false" onAction="#handleBackButtonPressed" prefHeight="106.0" prefWidth="236.0" text="BACK">
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font>

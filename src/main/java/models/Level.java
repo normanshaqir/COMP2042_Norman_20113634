@@ -1,66 +1,40 @@
+package models;
+
+import actorFactory.AbstractActorFactory;
+import actorFactory.FactoryProducer;
+import constants.EasyLevelValues;
+import highScore.HighScoreManager;
 import javafx.animation.AnimationTimer;
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-
-import models.Digit;
-import models.Player;
-import models.World;
-
-
-
-
-public class Main extends Application {
+public abstract class Level { // factory design pattern
 	AnimationTimer timer;
 	World background = new World();
 	Scene scene  = new Scene(background, 600, 800);
 	Player player = Player.getInstance();
 	
-	public static void main(String[] args) {
-		launch(args);
-	}
 
-	@Override 
-	public void start(Stage primaryStage) throws Exception { // Stage -> Scene -> Scene Graph. Stage is the window/container for a scene.
-		try {
-			Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainMenu.fxml"));
-			
-			Scene scene = new Scene(root);
-			primaryStage.setScene(scene);
-			primaryStage.setTitle("Frogger");
-			primaryStage.show();
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
-		
-		
-		// TODO:
-//		EasyLevel1 test = new EasyLevel1();
-//		test.spawnActors();
-//		test.startGame(primaryStage);
-		
-		
-//	    MusicPlayer Music = new MusicPlayer();
-//	    Music.playMusic();
-//	    EasyLevel1 test = new EasyLevel1();
-//	    test.spawnActors();
-//	    test.startGame(primaryStage);
-		
-	    
-//	    HighScoreManager hm = new HighScoreManager();
-//        hm.addScore("Astaga",player.getPoints());
-//        hm.addScore("Marge",300);
-//        hm.addScore("Maggie",220);
-//        hm.addScore("Homer",100);
-//        hm.addScore("Lisa",270);
-
-	}
+	AbstractActorFactory LogFactory = FactoryProducer.getFactory("LOG");
+	AbstractActorFactory CarFactory = FactoryProducer.getFactory("CAR");
+	AbstractActorFactory TruckFactory = FactoryProducer.getFactory("TRUCK");
+	
+	public abstract void spawnActors();
+	
+	public void start() { // start music embedded in stage(mediaplayer), starts AnimationTimer for score
+    	createTimer();
+        timer.start();
+        
+    }
+	
+	public void stop() { // GAME END (stop animationtimer)
+		HighScoreManager hm = new HighScoreManager();
+	    hm.addScore("Astaga",player.getPoints());
+	    System.out.print(hm.getHighscoreString());
+        timer.stop();
+    }
 	
 	public void createTimer() { // manages score. need animationtimer to increment score 
         timer = new AnimationTimer() {
@@ -104,8 +78,11 @@ public class Main extends Application {
 		start();
 	}
 	
-	public void start() { // start music embedded in stage(mediaplayer), starts AnimationTimer for score
-    	createTimer();
-        timer.start();
-    }
+	public void spawnEnds() {
+		background.add(new End(13,96)); // End represent the boxes at the end of the map
+		background.add(new End(141,96));
+		background.add(new End(141 + 141-13,96));
+		background.add(new End(141 + 141-13+141-13+1,96));
+		background.add(new End(141 + 141-13+141-13+141-13+3,96));
+	}
 }
