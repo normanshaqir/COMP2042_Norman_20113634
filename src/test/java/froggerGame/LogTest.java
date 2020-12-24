@@ -37,7 +37,7 @@ class LogTest {
 	@Test
 	public void testGetHeight() {
 		Log log = new Log(ActorImages.IMG_LOG_1, 150, 300, 500, -1); // TODO
-		assertEquals(300, log.getHeight());
+		assertEquals(150, log.getHeight());
 	}
 
 }
