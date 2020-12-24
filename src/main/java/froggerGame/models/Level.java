@@ -14,8 +14,8 @@ public abstract class Level { // factory design pattern
 	AnimationTimer timer;
 	World background = new World();
 	Scene scene  = new Scene(background, 600, 800);
-	Player player = Player.getInstance();
 	
+	Player player = Player.getInstance();
 
 	AbstractActorFactory LogFactory = FactoryProducer.getFactory("LOG");
 	AbstractActorFactory CarFactory = FactoryProducer.getFactory("CAR");

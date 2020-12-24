@@ -1,0 +1,5 @@
+eclipse.preferences.version=1
+org.moreunit.preferences.version=2
+org.moreunit.test_type=junit5
+org.moreunit.unitsourcefolder=SM_assignfrogger\:src/main/resources\:SM_assignfrogger\:src/test
+org.moreunit.useprojectsettings=true

@@ -10,7 +10,7 @@ public class EasyLevel1 extends Level {
 	public void spawnActors() {
 		BackgroundImage gameBackground = new BackgroundImage(ActorImages.IMG_LEVEL_BACKGROUND);
 		background.add(gameBackground);
-		
+
 		ArrayList<Actor> ACTORS = new ArrayList<Actor>();
 
 		spawnEnds();
@@ -50,6 +50,8 @@ public class EasyLevel1 extends Level {
 	
 		background.add(player); //TODO: send frog to back with regard to trucks/cars
 		background.add(new Digit(0, 30, 360, 25));
+
+        background.add(new Digit(5, 30, 450, 45));
 
 		
 	}
