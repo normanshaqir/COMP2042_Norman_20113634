@@ -37,7 +37,7 @@ public class Player extends MovingActor {
 	private static final double FROGGER_MOVEMENT_Y = 13.3333333*2;
 	
 	/**
-	 * Constant storing the value that the frog travels each step along the x-axis
+	 * Constant storing the value that the frog travels each step along the x-axis	
 	 */
 	
 	private static final double FROGGER_MOVEMENT_X = 10.666666*2;

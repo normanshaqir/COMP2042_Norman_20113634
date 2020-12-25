@@ -8,16 +8,15 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #000441;" stylesheets="@../styling/display.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="froggerGame.controllers.selectScreenController">
    <children>
-      <Button layoutX="57.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleEasyButtonPressed" prefWidth="216.0" text="EASY" />
-      <Button layoutX="196.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleMediumButtonPressed" prefHeight="23.0" prefWidth="200.0" text="MEDIUM" />
-      <Button layoutX="328.0" layoutY="362.0" mnemonicParsing="false" onAction="#handleHardButtonPressed" prefWidth="216.0" text="HARD" />
-      <Button layoutX="180.0" layoutY="518.0" mnemonicParsing="false" onAction="#handleInsaneButtonPressed" prefWidth="216.0" text="INSANE" />
+      <Button layoutX="186.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleEasyButtonPressed" prefWidth="216.0" style="-fx-font-size: 14;" text="EASY" textAlignment="JUSTIFY" />
+      <Button layoutX="194.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleMediumButtonPressed" prefHeight="23.0" prefWidth="200.0" style="-fx-font-size: 14;" text="MEDIUM" textAlignment="JUSTIFY" />
+      <Button layoutX="186.0" layoutY="530.0" mnemonicParsing="false" onAction="#handleHardButtonPressed" prefWidth="216.0" style="-fx-font-size: 14;" text="HARD" textAlignment="JUSTIFY" />
+      <Button layoutX="186.0" layoutY="603.0" mnemonicParsing="false" onAction="#handleInsaneButtonPressed" prefWidth="216.0" style="-fx-font-size: 14;" text="INSANE" textAlignment="JUSTIFY" />
       <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="77.0">
          <image>
             <Image url="@../misc/frogger_favicon.png" />
          </image>
       </ImageView>
-      <Label layoutX="111.0" layoutY="331.0" style="-fx-font-size: 14;" text="There are three levels each" textFill="WHITE" />
-      <Label layoutX="125.0" layoutY="489.0" style="-fx-font-size: 14;" text="And one impossible level." textFill="WHITE" />
+      <Label layoutX="102.0" layoutY="323.0" style="-fx-font-size: 18;" text="Choose your difficulty" textFill="WHITE" />
    </children>
 </AnchorPane>
