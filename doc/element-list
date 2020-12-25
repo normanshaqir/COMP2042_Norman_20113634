@@ -1,0 +1,8 @@
+froggerGame
+froggerGame.actorFactory
+froggerGame.constants
+froggerGame.controllers
+froggerGame.highScore
+froggerGame.models
+froggerGame.models.actors
+froggerGame.models.levels

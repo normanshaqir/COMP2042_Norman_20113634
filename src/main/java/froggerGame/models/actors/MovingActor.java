@@ -49,6 +49,13 @@ public abstract class MovingActor extends Actor {
 	
 	/**
 	 * Alternate constructor, specfically for {@code Player} class.
+	 * @param filename -- location of  image file
+	 * @param w -- width of the object
+	 * @param h -- height of the object
+	 * @param xpos -- set x-coordinate of the object
+	 * @param ypos -- set y-coordinate of the object
+	 * @param s -- speed of the object
+	 * 
 	 * @see froggerGame.models.actors.Player
 	 */
 	
@@ -93,7 +100,7 @@ public abstract class MovingActor extends Actor {
 	
 	/**
 	 * Returns value of speed
-	 * @return
+	 * @return speed -- value of speed
 	 */
 	
 	public double getSpeed() {

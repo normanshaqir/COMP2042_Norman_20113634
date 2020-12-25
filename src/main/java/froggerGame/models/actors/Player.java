@@ -12,7 +12,7 @@ import javafx.scene.input.KeyEvent;
 import froggerGame.constants.*;
 
 
-public class Player extends MovingActor { // Animal.class aka Frogger (player) deals with animating the sprite, handling collision, and player score.
+public class Player extends MovingActor { 
 	private Image imgW1;
 	private Image imgA1;
 	private Image imgS1;
@@ -21,7 +21,7 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 	private Image imgW2;
 	private Image imgA2;
 	private Image imgS2;
-	private Image imgD2; // images to cycle through for animation
+	private Image imgD2; 
 	
 	private int points = 0;
 	private int lives = 5;
@@ -30,9 +30,27 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 	private boolean second = false;
 	private boolean noMove = false;
 	
+	/**
+	 * Constant storing the value that the frog travels each step along the y-axis
+	 */
+	
 	private static final double FROGGER_MOVEMENT_Y = 13.3333333*2;
+	
+	/**
+	 * Constant storing the value that the frog travels each step along the x-axis
+	 */
+	
 	private static final double FROGGER_MOVEMENT_X = 10.666666*2;
-	private static final int FROGGER_IMG_SIZE = 40; // width and height of image - corresponds with hitbox as well
+	
+	/**
+	 * Constant storing the dimensions of the frog
+	 * 
+	 */
+	private static final int FROGGER_IMG_SIZE = 40; 
+	
+	/**
+	 * Constant storing the value of the y-coordinate where there is water beyond
+	 */
 	
 	private static final int WATER = 413;
 	
@@ -70,11 +88,15 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		handleCollisionWithMobs();
 		handleDeathFlags(now);
 		
-		if (getLives() == 0) { //TODO:
+		if (getLives() == 0) { 
 			System.exit(0);
 		}
 		
 	}
+	
+	/**
+	 * Changes the image of the frog when a WASD key is pressed.
+	 */
 	
 	public void handleOnKeyPressed() {
 		setOnKeyPressed(new EventHandler<KeyEvent>() {
@@ -137,6 +159,13 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		});	
 	}
 	
+	/**
+	 * Changes the image of the frog when a WASD key is released, as well as modify a variable storing the 
+	 * distance left till the frog reaches the end of the map. This variable is updated everytime the player 
+	 * presses W, so as to ensure that the player does not earn double points if he goes forward and backward again and again.
+	 * 
+	 */
+	
 	public void handleOnKeyReleased() {
 		setOnKeyReleased(new EventHandler<KeyEvent>() {
 			public void handle(KeyEvent event) {
@@ -145,7 +174,7 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 				if (event.getCode() == KeyCode.W) {	  
 					if (getY() < distanceLeftTillEnd) {
 						changeScore = true;
-						distanceLeftTillEnd = getY(); // ensures that player cannot get points by going back and forth
+						distanceLeftTillEnd = getY(); 
 						points+=10;
 					}
 	                move(0, -FROGGER_MOVEMENT_Y);
@@ -173,35 +202,46 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 			
 		});
 	}
-	
+	/**
+	 * If the player tries to move out of the window, move the player back into the window.
+	 */
 	public void preventPlayerFromGoingOutOfBounds() {
-		if (getY()>734) { // prevents player from going out of y bounds
-			//setX(300);
-			//setY(679.8+movement);
+		if (getY()>734) { 
 			move(0, -FROGGER_MOVEMENT_Y);
 		}
 		
-		if (getX()<0) { // prevents player from going out of bounds
+		if (getX()<0) { 
 			move(FROGGER_MOVEMENT_Y, 0);
 		}
 		
-		if (getX()>600) { // prevents player from going out of X bounds
+		if (getX()>600) { 
 			move(-FROGGER_MOVEMENT_Y, 0);
 		}
 	}
 	
+	/**
+	 * Handle collision with different mobs. If the player is on a Log or a Turtle, dynamically move the player
+	 * according to the speed of the Log/Turtle. 
+	 * 
+	 * If the player collides with an obstacle or falls into the water, set respective death flags to true.
+	 * 
+	 * If the player reaches the end of the map (hole), activate the hole reached and add points, and then respawn the player.
+	 * 
+	 * 
+	 */
+	
 	public void handleCollisionWithMobs() {
-		if (getIntersectingObjects(Obstacle.class).size() >= 1) { // check for collision, if yes trigger carDeath animation and move to spawn
+		if (getIntersectingObjects(Obstacle.class).size() >= 1) { 
 			carDeath = true;
 			
 		}
 
-		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) { // if player is on Log, move player alongside the Log
+		if (getIntersectingObjects(Log.class).size() >= 1 && !noMove) { 
 				move(getOneIntersectingObject(Log.class).getSpeed(),0); 
 			
 		}
-		else if (getIntersectingObjects(DryTurtle.class).size() >= 1 && !noMove) { // if player is on Turtle, move player alongside the Turtle
-			move(getOneIntersectingObject(DryTurtle.class).getSpeed(),0); // move left (all turtles move to the left)
+		else if (getIntersectingObjects(DryTurtle.class).size() >= 1 && !noMove) { 
+			move(getOneIntersectingObject(DryTurtle.class).getSpeed(),0); 
 			
 		}
 		else if (getIntersectingObjects(Crocodile.class).size() >= 1) {
@@ -211,20 +251,20 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 				move(getOneIntersectingObject(Crocodile.class).getSpeed(), 0);
 			}
 		}
-		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { // similar to Turtle class, except for isSunk
+		else if (getIntersectingObjects(WetTurtle.class).size() >= 1) { 
 			if (getOneIntersectingObject(WetTurtle.class).isSunk()) {
-				waterDeath = true; // trigger waterDeath if isSunk returns true
+				waterDeath = true; 
 				
 			} else {
-				move(getOneIntersectingObject(WetTurtle.class).getSpeed(), 0); // move left
+				move(getOneIntersectingObject(WetTurtle.class).getSpeed(), 0); 
 				
 			}
 			
 		}
 		else if (getIntersectingObjects(End.class).size() >= 1) {
-			inter = (ArrayList<End>) getIntersectingObjects(End.class); // TODO: modify how score is updated. Currently returns a new ArrayList everytime.
+			inter = (ArrayList<End>) getIntersectingObjects(End.class); // 
 			
-			if (getOneIntersectingObject(End.class).isActivated()) { // if player collides with frog in hole, deduct points
+			if (getOneIntersectingObject(End.class).isActivated()) { 
 				numberOfEndsActivated--;
 				points-=50;
 			}
@@ -233,17 +273,27 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 			changeScore = true;
 			distanceLeftTillEnd = 800;
 			
-			getOneIntersectingObject(End.class).setEnd(); // put frog in hole
-			numberOfEndsActivated++; // increment end, end == 5 triggers game over screen
+			getOneIntersectingObject(End.class).setEnd(); 
+			numberOfEndsActivated++; 
 			
 			setX(300);
-			setY(679.8+FROGGER_MOVEMENT_Y); // move player back to spawn
+			setY(679.8+FROGGER_MOVEMENT_Y); 
 		}
-		else if (getY()<WATER) { // if player collides/falls into water
+		else if (getY()< WATER) { 
 			waterDeath = true;
 
 		}
 	}
+	
+	/**
+	 * First, death animations are instantiated for use later. Then, if either waterDeath or
+	 * carDeath flags are true cycle through death animations. 
+	 * 
+	 * At the end of each animation, set death flag back to false and respawn the player.
+	 * 
+	 * The {@code handledDeathFlags(now)} method is used in the Player's act method.
+	 * @param now -- time in nanoseconds
+	 */
 	
 	public void handleDeathFlags(long now) {
 		Image froggerDeath = new Image(FroggerImages.IMG_FROGGER_UP, FROGGER_IMG_SIZE, FROGGER_IMG_SIZE, true, true);
@@ -302,7 +352,9 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		}
 	}
 	
-	// used to respawn player after death
+	/**
+	 * Called to respawn (reset) player position to starting point. Also deduct points as well as lives.
+	 */
 	public void respawnPlayer() {
 		setImage(imgW1);
 		setX(300);
@@ -313,7 +365,7 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		
 		if (points>50) {
 			points-=50;
-			changeScore = true; // if player dies, deduct score.
+			changeScore = true; 
 		}
 		
 		if (lives > 0) {
@@ -321,17 +373,38 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		}
 	}
 	
+	/**
+	 * Get the only instance of Player. If no instance exists, an instance will be instantiated. 
+	 * Abides the Singleton design pattern.
+	 * @return instance -- instance of Player
+	 */
+	
 	public static Player getInstance() { // Singleton design pattern
 		return instance;
 	}
+	
+	/**
+	 * Check if all five ends have been reached.
+	 * @return true/false -- if true, all five ends have been reached.
+	 */
 	
 	public boolean getStop() { // game over function, called when all five holes are filled with frogs
 		return numberOfEndsActivated == 5;
 	}
 	
+	/**
+	 * Returns player's current score for printing
+	 * @return points -- player's current score 
+	 */
+	
 	public int getPoints() { // for use in displaying score
 		return points;
 	}
+	
+	/**
+	 * Returns true if changeScore is true, and set changeScore to false.
+	 * @return changeScore -- flag indicating to modify score shown real time
+	 */
 	
 	public boolean changeScore() { // get value of changeScore
 		if (changeScore) {
@@ -342,12 +415,22 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		
 	}
 	
+	/**
+	 * Check if the player died and return a boolean value.
+	 * @return boolean
+	 */
+	
 	public boolean didPlayerDie() {
 		if (waterDeath || carDeath) {
 			return true;
 		}
 		return false;
 	}
+	
+	/**
+	 * Returns the number of lives the player has left
+	 * @return lives -- number of chances the player has left to complete the round
+	 */
 	
 	public int getLives() {
 		return lives;

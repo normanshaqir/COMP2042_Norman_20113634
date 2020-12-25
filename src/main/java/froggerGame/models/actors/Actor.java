@@ -26,7 +26,7 @@ public class Actor extends ImageView {
 	 * @param w - the width of the {@code Actor} object to be set
 	 * @param h - height of image to be set
 	 * @param xpos - xpos of image to be set
-	 * @param ypos ypos of image to be set
+	 * @param ypos - ypos of image to be set
     */
     
 	public Actor (String filename, int w, int h, int xpos, int ypos) {
@@ -45,6 +45,7 @@ public class Actor extends ImageView {
     
     /**
      * Returns the width of the {@code Actor} node previously invoked in the constructor
+     * @return width
      */
     
     public double getWidth() {
@@ -53,15 +54,18 @@ public class Actor extends ImageView {
     
     /**
      * Returns the height of the {@code Actor} node previously invoked in the constructor
+     * @return height
      */
     
     public double getHeight() {
         return this.getBoundsInLocal().getHeight();
     }
+    
 	/**
 	 * 
 	 * @param <A> -- any class that is a subclass of Actor
 	 * @param cls -- any class that is a subclass of Actor
+	 * 
 	 * @return someArray -- ArrayList containing all {@code cls} objects 
 	 */
     public <A extends Actor> java.util.List<A> getIntersectingObjects(java.lang.Class<A> cls){ // method used to return an ArrayList of other actors target actor is colliding with
@@ -75,7 +79,10 @@ public class Actor extends ImageView {
     }
     
     /**
-     @see getIntersectingObjects
+     * @see getIntersectingObjects
+     * @param <A> -- any class that is a subclass of Actor
+	 * @param cls -- any class that is a subclass of Actor
+	 * 
      * @return the first element in the ArrayList provided by getIntersectingObjects
      */
     public <A extends Actor> A getOneIntersectingObject(java.lang.Class<A> cls) { // method used to return one actor that actor is colliding/intersecting with
