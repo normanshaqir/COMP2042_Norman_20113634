@@ -1,4 +1,4 @@
-package froggerGame.models;
+package froggerGame.models.actors;
 
 import static org.junit.jupiter.api.Assertions.*;
 

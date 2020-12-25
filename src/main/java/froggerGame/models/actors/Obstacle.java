@@ -1,4 +1,4 @@
-package froggerGame.models;
+package froggerGame.models.actors;
 
 public class Obstacle extends MovingActor {
 	

@@ -1,4 +1,4 @@
-package froggerGame.models;
+package froggerGame.models.actors;
 
 public class Car extends Obstacle {
 	

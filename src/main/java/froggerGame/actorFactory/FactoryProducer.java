@@ -1,6 +1,5 @@
 package froggerGame.actorFactory;
 
-
 public class FactoryProducer {
 	public static AbstractActorFactory getFactory (String actorClass) {
 		switch (actorClass) {

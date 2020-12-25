@@ -1,9 +1,16 @@
-package froggerGame.models;
+package froggerGame.models.levels;
 
+import froggerGame.Main;
 import froggerGame.actorFactory.AbstractActorFactory;
 import froggerGame.actorFactory.FactoryProducer;
-import froggerGame.constants.EasyLevelValues;
+import froggerGame.constants.ActorImages;
+
 import froggerGame.highScore.HighScoreManager;
+import froggerGame.models.World;
+import froggerGame.models.actors.BackgroundImage;
+import froggerGame.models.actors.Digit;
+import froggerGame.models.actors.End;
+import froggerGame.models.actors.Player;
 import javafx.animation.AnimationTimer;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -23,9 +30,17 @@ public abstract class Level { // factory design pattern
 	
 	public abstract void spawnActors();
 	
-	public void start() { // start music embedded in stage(mediaplayer), starts AnimationTimer for score
+	public Level nextLevel() {
+		if (this instanceof EasyLevel) {
+			return new MedLevel();
+		}
+		return null;
+	}
+	
+	public void start() { // starts AnimationTimer connected to all actors and as well as createLevel().
     	createTimer();
         timer.start();
+
         
     }
 	
@@ -34,6 +49,9 @@ public abstract class Level { // factory design pattern
 	    hm.addScore("Astaga",player.getPoints());
 	    System.out.print(hm.getHighscoreString());
         timer.stop();
+        
+        
+        
     }
 	
 	public void createTimer() { // manages score. need animationtimer to increment score 
@@ -42,8 +60,11 @@ public abstract class Level { // factory design pattern
             public void handle(long now) {
             	
 				if (player.changeScore()) { // calls setNumber function to display score
-            		setNumber(player.getPoints());
+            		setScore(player.getPoints());
             	}
+				if (player.didPlayerDie()) {
+					setLives(player.getLives()-1);
+				}
             	if (player.getStop()) { // game over
             		System.out.print("STOP:");
             		//Music.stopMusic();
@@ -51,15 +72,17 @@ public abstract class Level { // factory design pattern
             		background.stop(); 
             		Alert alert = new Alert(AlertType.INFORMATION);
             		alert.setTitle("You Have Won The Game!");
-            		alert.setHeaderText("Your High Score: "+player.getPoints()+"!");
+            		alert.setHeaderText("Your High Score: "+ player.getPoints()+"!");
             		alert.setContentText("Highest Possible Score: 800");
             		alert.show();
+
+            		
             	}
             }
         };
     }
 	
-	public void setNumber(int n) { // invokes Digit constructor to create a new image corresponding to current score (VISUAL)
+	public void setScore(int n) { // invokes Digit constructor to create a new image corresponding to current score (VISUAL)
     	int shift = 0;
     	
     	while (n > 0) {
@@ -71,11 +94,25 @@ public abstract class Level { // factory design pattern
     		}
     }
 	
+	public void setLives(int n) {
+		background.add(new Digit(n, 30, 450, 45));
+	}  
+	
 	public void startGame(Stage primaryStage) {
-		background.start();
+        createLevel();
+		background.start(); // starts timer for world
 		primaryStage.setScene(scene);
 		primaryStage.show();
-		start();
+		start(); // starts timer for frog
+	}
+	
+	public void createLevel() {
+		BackgroundImage gameBackground = new BackgroundImage(ActorImages.IMG_LEVEL_BACKGROUND);
+		background.add(gameBackground);
+		spawnEnds();
+		spawnScoreAndLives();
+		spawnActors();
+		
 	}
 	
 	public void spawnEnds() {
@@ -84,5 +121,10 @@ public abstract class Level { // factory design pattern
 		background.add(new End(141 + 141-13,96));
 		background.add(new End(141 + 141-13+141-13+1,96));
 		background.add(new End(141 + 141-13+141-13+141-13+3,96));
+	}
+	
+	public void spawnScoreAndLives() {
+		background.add(new Digit(0, 30, 360, 25));
+        background.add(new Digit(5, 30, 450, 45));
 	}
 }

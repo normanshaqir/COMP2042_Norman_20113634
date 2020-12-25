@@ -1,7 +1,7 @@
 package froggerGame.actorFactory;
 
-import froggerGame.models.Actor;
-import froggerGame.models.Car;
+import froggerGame.models.actors.Actor;
+import froggerGame.models.actors.Car;
 import froggerGame.constants.ActorImages;
 
 public class CarFactory implements AbstractActorFactory {

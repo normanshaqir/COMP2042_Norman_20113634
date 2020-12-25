@@ -1,7 +1,7 @@
 package froggerGame.actorFactory;
 
-import froggerGame.models.Actor;
-import froggerGame.models.Log;
+import froggerGame.models.actors.Actor;
+import froggerGame.models.actors.Log;
 import froggerGame.constants.ActorImages;
 
 public class LogFactory implements AbstractActorFactory {

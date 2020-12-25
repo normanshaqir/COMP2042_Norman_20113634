@@ -64,35 +64,23 @@ public class mainMenuController {
     }
 
     @FXML
-    void handleMuteButtonPressed(ActionEvent event) {
-    	if (flag) { // flag == true -> muted.
-    		flag = false;
-    		mp.play();
-    	}
-    	else {
-    		flag = true;
-    		mp.stop();
-    	}
-    }
-
-    @FXML
     void handleQuitButtonPressed(ActionEvent event) {
     	System.exit(0);
     }
     
     @FXML
     void initialize() {
-        assert playButton != null : "fx:id=\"playButton\" was not injected: check your FXML file 'mainMenu.fxml'.";
-        assert infoButton != null : "fx:id=\"helpButton\" was not injected: check your FXML file 'mainMenu.fxml'.";
-        assert quitButton != null : "fx:id=\"quitButton\" was not injected: check your FXML file 'mainMenu.fxml'.";
-        
-        String path = "\\Users\\User\\eclipse-workspace\\Practice\\src\\application\\Frogger Main Song Theme (loop).mp3";  
-        
-        Media media = new Media(new File(path).toURI().toString());  
-        
-        mp = new MediaPlayer(media);
-		mp.setCycleCount(MediaPlayer.INDEFINITE);
-        mp.play();
+//        assert playButton != null : "fx:id=\"playButton\" was not injected: check your FXML file 'mainMenu.fxml'.";
+//        assert infoButton != null : "fx:id=\"helpButton\" was not injected: check your FXML file 'mainMenu.fxml'.";
+//        assert quitButton != null : "fx:id=\"quitButton\" was not injected: check your FXML file 'mainMenu.fxml'.";
+//        
+//        String path = "\\Users\\User\\eclipse-workspace\\Practice\\src\\application\\Frogger Main Song Theme (loop).mp3";  
+//        
+//        Media media = new Media(new File(path).toURI().toString());  
+//        if (mp == null)
+//        	mp = new MediaPlayer(media);
+//		mp.setCycleCount(MediaPlayer.INDEFINITE);
+//        mp.play();
         
     }
     

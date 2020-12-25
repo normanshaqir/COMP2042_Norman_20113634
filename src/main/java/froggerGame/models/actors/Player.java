@@ -1,4 +1,4 @@
-package froggerGame.models;
+package froggerGame.models.actors;
 
 import java.util.ArrayList;
 
@@ -70,7 +70,7 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		handleCollisionWithMobs();
 		handleDeathFlags(now);
 		
-		if (getLives() == 0) {
+		if (getLives() == 0) { //TODO:
 			System.exit(0);
 		}
 		
@@ -262,13 +262,13 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 			if ((now)% 11 ==0) { //
 				carD++;
 			}
-			if (carD==1) {
+			if (carD == 1) {
 				setImage(imgCarDeath1);
 			}
-			if (carD==2) {
+			if (carD == 2) {
 				setImage(imgCarDeath2);
 			}
-			if (carD==3) {
+			if (carD == 3) {
 				setImage(imgCarDeath3);
 			}
 			if (carD == 4) { // after three cycles of animation, move frogger back to spawn
@@ -282,13 +282,13 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 			if ((now)% 11 ==0) {
 				carD++;
 			}
-			if (carD==1) {
+			if (carD == 1) {
 				setImage(imgWaterDeath1);
 			}
-			if (carD==2) {
+			if (carD == 2) {
 				setImage(imgWaterDeath2);
 			}
-			if (carD==3) {
+			if (carD == 3) {
 				setImage(imgWaterDeath3);
 			}
 			if (carD == 4) {
@@ -340,6 +340,13 @@ public class Player extends MovingActor { // Animal.class aka Frogger (player) d
 		}
 		return false;
 		
+	}
+	
+	public boolean didPlayerDie() {
+		if (waterDeath || carDeath) {
+			return true;
+		}
+		return false;
 	}
 	
 	public int getLives() {

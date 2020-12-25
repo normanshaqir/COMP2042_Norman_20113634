@@ -1,44 +1,36 @@
 package froggerGame;
 
-import java.io.IOException;
-
-import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
-import froggerGame.models.World;
-import froggerGame.models.Digit;
-import froggerGame.models.Player;
-
-
+import froggerGame.models.MusicPlayer;
 
 
 public class Main extends Application {
-	AnimationTimer timer;
-	World background = new World();
-	Scene scene  = new Scene(background, 600, 800);
-	Player player = Player.getInstance();
-
-	
+	MusicPlayer mp = new MusicPlayer();
+	static Stage window;
 	public static void main(String[] args) {
 		launch(args);
 	}
 
 	@Override 
 	public void start(Stage primaryStage) throws Exception { // Stage -> Scene -> Scene Graph. Stage is the window/container for a scene.
+		this.window = primaryStage;
+		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("/fxml/mainMenu.fxml"));
-			
 			Scene scene = new Scene(root);
 			primaryStage.setScene(scene);
 			primaryStage.setTitle("Frogger");
+			primaryStage.setResizable(false);
+			primaryStage.getIcons().add(new Image ("file:src/main/resources/misc/frogger_favicon.png"));
+			mp.playMusic();
 			primaryStage.show();
+			
 			
 		} catch(Exception e) {
 			e.printStackTrace();
@@ -66,5 +58,9 @@ public class Main extends Application {
 //        hm.addScore("Lisa",270);
 
 	
+	}
+	
+	public static Stage getStage() {
+		return Main.window;
 	}
 }
