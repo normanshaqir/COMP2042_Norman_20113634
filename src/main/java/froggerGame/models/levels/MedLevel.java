@@ -39,10 +39,10 @@ public class MedLevel extends Level {
 					MedLevelValues.DRYTURTLES_XPOS_VALUES[i], MedLevelValues.DRYTURTLES_YPOS_VALUES[i], MedLevelValues.DRYTURTLES_SPEED_VALUES[i]));
 		}
 		
-//		for (int i = 0; i < MedLevelValues.CROCODILES_IMGSIZE_VALUES.length; i++) {
-//			background.add(new Crocodile(MedLevelValues.CROCODILES_IMGSIZE_VALUES[i], MedLevelValues.CROCODILES_IMGSIZE_VALUES[i], 
-//					MedLevelValues.CROCODILES_XPOS_VALUES[i], MedLevelValues.CROCODILES_YPOS_VALUES[i], MedLevelValues.CROCODILES_SPEED_VALUES[i]));
-//		}
+		for (int i = 0; i < MedLevelValues.CROCODILES_IMGSIZE_VALUES.length; i++) {
+			background.add(new Crocodile(MedLevelValues.CROCODILES_IMGSIZE_VALUES[i], MedLevelValues.CROCODILES_IMGSIZE_VALUES[i], 
+					MedLevelValues.CROCODILES_XPOS_VALUES[i], MedLevelValues.CROCODILES_YPOS_VALUES[i], MedLevelValues.CROCODILES_SPEED_VALUES[i]));
+		}
 		
 		for (int i = 0; i < MedLevelValues.WETTURTLES_IMGSIZE_VALUES.length; i++) {
 			background.add(new WetTurtle(MedLevelValues.WETTURTLES_IMGSIZE_VALUES[i], MedLevelValues.WETTURTLES_IMGSIZE_VALUES[i], MedLevelValues.WETTURTLES_XPOS_VALUES[i], MedLevelValues.WETTURTLES_YPOS_VALUES[i], MedLevelValues.WETTURTLES_SPEED_VALUES[i]));

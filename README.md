@@ -57,10 +57,15 @@ Java 13.0.2 or higher
     
     1b) Open eclipse and create a project 
     2b) Go to File > Import > Existing Maven Project. Then locate the project folder and import it and select all resources within the folder.
+    
     3b) Let it install. It will throw errors in the meantime, so please wait.
+    
     4b) After installation, right click on the project folder (SM_assignfrogger) and go to Run As > Run Configuration. Then right click on Maven Build and create a new Maven Configuration. 
+    
     5b) Within the Maven Configuration, simply type 'exec:java" in the goals field.
+    
     6b) Then apply and run.
+    
     7b) The game will now run.
 
 # Game Screens

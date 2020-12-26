@@ -13,20 +13,20 @@ package froggerGame.constants;
 
 public class MedLevelValues {
 	// Logs
-	public static final String[] LOGS_IMG_VALUES = {"IMG_LOG_3", "IMG_LOG_3","IMG_LOG_3",
+	public static final String[] LOGS_IMG_VALUES = {"IMG_LOG_3",
 													"IMG_LOG_1", "IMG_LOG_1", "IMG_LOG_3",
 													"IMG_LOG_3","IMG_LOG_3"};
 	
-	public static final int[] LOGS_IMGSIZE_VALUES = {150, 150, 150, 300, 300, 150, 150, 150};
-	public static final int[] LOGS_XPOS_VALUES = {0, 220, 440, 0, 400, 50, 270, 490};
-	public static final int[] LOGS_YPOS_VALUES = {166, 166, 166, 276, 276, 329, 329, 329};
-	public static final double[] LOGS_SPEED_VALUES = {0.75, 0.75, 0.75, -2, -2, 0.75, 0.75, 0.75};
+	public static final int[] LOGS_IMGSIZE_VALUES = {150, 300, 300, 150, 150, 150};
+	public static final int[] LOGS_XPOS_VALUES = {440, 0, 400, 50, 270, 490};
+	public static final int[] LOGS_YPOS_VALUES = {166, 276, 276, 329, 329, 329};
+	public static final double[] LOGS_SPEED_VALUES = { .75, -2, -2, 0.75, 0.75, 0.75};
 	
 	// Crocodiles
-//	public static final int[] CROCODILES_IMGSIZE_VALUES = {138, 138};
-//	public static final int[] CROCODILES_XPOS_VALUES = {0, 220};
-//	public static final int[] CROCODILES_YPOS_VALUES = {166, 166};
-//	public static final double[] CROCODILES_SPEED_VALUES = {0.75, 0.75};
+	public static final int[] CROCODILES_IMGSIZE_VALUES = {138, 138};
+	public static final int[] CROCODILES_XPOS_VALUES = {0, 220};
+	public static final int[] CROCODILES_YPOS_VALUES = {166, 166};
+	public static final double[] CROCODILES_SPEED_VALUES = {0.75, 0.75};
 	
 	// DryTurtles
 	public static final int[] DRYTURTLES_IMGSIZE_VALUES = {130, 130};
