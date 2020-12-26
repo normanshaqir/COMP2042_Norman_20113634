@@ -52,10 +52,13 @@ Java 13.0.2 or higher
 4. You can start the game by using the a) command prompt or by using b) eclipse.   
     
     1a) Open the command prompt and change directory to the directory containing the pom.xml
+    
     2a) Type the commands 'mvn clean install' and then 'mvn exec:java'
+    
     3a) The game will now run.
     
-    1b) Open eclipse and create a project 
+    1b) Open eclipse and create a project
+    
     2b) Go to File > Import > Existing Maven Project. Then locate the project folder and import it and select all resources within the folder.
     
     3b) Let it install. It will throw errors in the meantime, so please wait.
