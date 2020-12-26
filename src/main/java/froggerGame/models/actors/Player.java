@@ -4,13 +4,33 @@ import java.util.ArrayList;
 
 
 import javafx.event.EventHandler;
-
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 
 import froggerGame.constants.*;
 
+/**
+ * <h1> Player </h1>
+ * 
+ * <p>
+ * The {@code Player} class handles all actions that can be performed by the player when controlling the frog, 
+ * its animation handling, its movement,as well as its numerous properties (score, lives). 
+ * The class extends the {@code MovingActor}, which in turn extends the {@code Actor} class. 
+ * 
+ * Hence it inherits the numerous methods that both classes have, such as {@code getSpeed()}.
+ * 
+ * This class is the most important class with regards to the gameplay. It handles the various
+ * actions that occur when the frog/player collides with another mob in the game.
+ * 
+ * For example, when the frog collides with a {@code Car} or {@code Truck}, they will die and lose a live,
+ * and be transported back to the spawn point. 
+ * 
+ * When the frog collides with a {@code Log} or {@code DryTurtle or WetTurtle} they will move along with the mobs. 
+ * These serve to help the frog manuver across the water in the second half of the game, of which the frog will
+ * drown in if it steps into the water section without transportation.
+ *
+ */
 
 public class Player extends MovingActor { 
 	private Image imgW1;
@@ -23,7 +43,7 @@ public class Player extends MovingActor {
 	private Image imgS2;
 	private Image imgD2; 
 	
-	private int points = 0;
+	private static int points = 0;
 	private int lives = 5;
 	private int numberOfEndsActivated = 0;
 	
@@ -87,10 +107,6 @@ public class Player extends MovingActor {
 		preventPlayerFromGoingOutOfBounds();
 		handleCollisionWithMobs();
 		handleDeathFlags(now);
-		
-		if (getLives() == 0) { 
-			System.exit(0);
-		}
 		
 	}
 	
@@ -279,7 +295,7 @@ public class Player extends MovingActor {
 			setX(300);
 			setY(679.8+FROGGER_MOVEMENT_Y); 
 		}
-		else if (getY()< WATER) { 
+		else if (getY() < WATER) { 
 			waterDeath = true;
 
 		}
@@ -397,7 +413,7 @@ public class Player extends MovingActor {
 	 * @return points -- player's current score 
 	 */
 	
-	public int getPoints() { // for use in displaying score
+	public static int getPoints() { // for use in displaying score
 		return points;
 	}
 	

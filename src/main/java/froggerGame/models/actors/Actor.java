@@ -23,10 +23,10 @@ public class Actor extends ImageView {
 	/**
 	 * Creates an Actor object.
 	 * @param filename - location of an image file
-	 * @param w - the width of the {@code Actor} object to be set
-	 * @param h - height of image to be set
-	 * @param xpos - xpos of image to be set
-	 * @param ypos - ypos of image to be set
+	 * @param w -- width of the object
+	 * @param h -- height of the object
+	 * @param xpos -- set x-coordinate of the object
+	 * @param ypos -- set y-coordinate of the object
     */
     
 	public Actor (String filename, int w, int h, int xpos, int ypos) {

@@ -1,7 +1,19 @@
 package froggerGame.constants;
-
+/**
+ * <h1>ActorImages</h1>
+ * <p>
+ * This class contains constants storing the file path for the images of all actors.
+ * The usage and creation of this class aims to improve code cleanliness, as well
+ * as clarity and convenience when going through the code. 
+ * 
+ * There is no longer a need to worry about where a particular file is stored.
+ * All in all, this is a good software maintenance practice.
+ * </p>
+ * @author User
+ *
+ */
 public class ActorImages {
-	public static final String IMG_LEVEL_BACKGROUND = "file:src/main/resources/misc/background.png";
+	public static final String IMG_LEVEL_BACKGROUND = "file:src/main/resources/misc/backgrounds/background.png";
 	
 	// End
 	public static final String IMG_END = "file:src/main/resources/actors/end/End.png";

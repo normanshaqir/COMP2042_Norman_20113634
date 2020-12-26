@@ -6,7 +6,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #000441;" stylesheets="@../styling/display.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="froggerGame.controllers.selectScreenController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" style="-fx-background-color: #000441;" stylesheets="@../styling/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="froggerGame.controllers.selectScreenController">
    <children>
       <Button layoutX="186.0" layoutY="392.0" mnemonicParsing="false" onAction="#handleEasyButtonPressed" prefWidth="216.0" style="-fx-font-size: 14;" text="EASY" textAlignment="JUSTIFY" />
       <Button layoutX="194.0" layoutY="458.0" mnemonicParsing="false" onAction="#handleMediumButtonPressed" prefHeight="23.0" prefWidth="200.0" style="-fx-font-size: 14;" text="MEDIUM" textAlignment="JUSTIFY" />
@@ -14,7 +14,7 @@
       <Button layoutX="186.0" layoutY="603.0" mnemonicParsing="false" onAction="#handleInsaneButtonPressed" prefWidth="216.0" style="-fx-font-size: 14;" text="INSANE" textAlignment="JUSTIFY" />
       <ImageView fitHeight="200.0" fitWidth="200.0" layoutX="200.0" layoutY="77.0">
          <image>
-            <Image url="@../misc/frogger_favicon.png" />
+            <Image url="@../misc/icons/frogger_favicon.png" />
          </image>
       </ImageView>
       <Label layoutX="102.0" layoutY="323.0" style="-fx-font-size: 18;" text="Choose your difficulty" textFill="WHITE" />

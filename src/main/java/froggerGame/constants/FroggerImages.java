@@ -1,5 +1,15 @@
 package froggerGame.constants;
-
+/**
+ * <h1>FroggerImages</h1>
+ * <p>
+ * This class contains constants storing the file paths of the various images of Frogger, 
+ * which are used to animate its movement.* It also contains its death animations, from collision with a car/truck
+ * and with the water.
+ * </p>
+ * 
+ * @author hfyns3
+ *
+ */
 public class FroggerImages {
 	// Frogger Still 
 		public static final String IMG_FROGGER_UP = "file:src/main/resources/actors/frogger/froggerUp.png";

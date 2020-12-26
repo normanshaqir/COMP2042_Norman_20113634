@@ -1,5 +1,16 @@
 package froggerGame.constants;
 
+/**
+ * <h1>InsaneLevelValues</h1>
+ * <p>
+ * This class stores the values to be used in spawning mobs in the Insane level. This increases convenience
+ * as well as maintainability across the program code.
+ * </p>
+ * @see froggerGame.models.levelss
+ * @author hfyns3
+ *
+ */
+
 public class InsaneLevelValues {
 	// Logs
 	public static final String[] LOGS_IMG_VALUES = {"IMG_LOG_3", "IMG_LOG_3", "IMG_LOG_3",

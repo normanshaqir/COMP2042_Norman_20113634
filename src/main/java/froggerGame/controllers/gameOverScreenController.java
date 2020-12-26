@@ -1,18 +1,28 @@
 package froggerGame.controllers;
 
-import java.net.URL;
-import java.util.ResourceBundle;
+import java.io.IOException;
+
+import froggerGame.models.actors.Player;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+/**
+ * <h1>gameOverScreenController</h1>
+ * <p>
+ * The {@code gameOverScreenController} serves as the controller for the userScreen fxml view. It uses the data
+ * stored by the {@code HighScoreManager} and updates the text label on the screen to reflect the score the player
+ * got.
+ * </p>
+ * 
+ * @see froggerGame.controllers
+ * @see froggerGame.highScore
+ * @author hfyns3
+ *
+ */
 
 public class gameOverScreenController {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
 
     @FXML
     private Button backButton;
@@ -22,12 +32,18 @@ public class gameOverScreenController {
 
     @FXML
     private Label scoreLabel;
-
+    
     @FXML
     void initialize() {
-        assert backButton != null : "fx:id=\"backButton\" was not injected: check your FXML file 'gameOverScreen.fxml'.";
-        assert quitButton != null : "fx:id=\"quitButton\" was not injected: check your FXML file 'gameOverScreen.fxml'.";
-        assert scoreLabel != null : "fx:id=\"scoreLabel\" was not injected: check your FXML file 'gameOverScreen.fxml'.";
-
+        scoreLabel.setText(Integer.toString(Player.getPoints()));
+    }
+    /**
+     * When quit button is pressed, the game will exit.
+    * @param event -- any event that can be listened and handled
+     * @throws IOException -- thrown in the case of any I/O exceptions
+	 */
+    
+    public void handleQuitButtonPressed(ActionEvent event) throws IOException {
+    	System.exit(0);
     }
 }

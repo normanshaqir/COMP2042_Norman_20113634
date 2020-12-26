@@ -1,5 +1,17 @@
 package froggerGame.constants;
 
+/**
+ * <h1>HardLevelValues</h1>
+ * <p>
+ * This class stores the values to be used in spawning mobs in the Hard level. This increases convenience
+ * as well as maintainability across the program code.
+ * </p>
+ * 
+ * @see froggerGame.models.levels
+ * @author hfyns3
+ *
+ */
+
 public class HardLevelValues {
 	// Logs
 	public static final String[] LOGS_IMG_VALUES = {"IMG_LOG_3", "IMG_LOG_3", "IMG_LOG_3",

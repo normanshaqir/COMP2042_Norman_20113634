@@ -6,29 +6,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" stylesheets="@../styling/display.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="froggerGame.controllers.mainMenuController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="600.0" stylesheets="@../styling/stylesheet.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="froggerGame.controllers.mainMenuController">
    <children>
             <ImageView fitHeight="800.0" fitWidth="600.0">
                <image>
-                  <Image url="@../misc/mainMenu_background2.png" />
+                  <Image url="@../misc/backgrounds/mainMenuBackground.png" />
                </image>
             </ImageView>
-            <Button fx:id="playButton" layoutX="204.0" layoutY="296.0" mnemonicParsing="false" onAction="#handlePlayButtonPressed" prefHeight="76.0" prefWidth="165.0" text="PLAY">
+            <Button fx:id="playButton" layoutX="204.0" layoutY="296.0" mnemonicParsing="false" onAction="#handlePlayButtonPressed" prefHeight="76.0" prefWidth="165.0" style="-fx-font-size: 24;" text="PLAY">
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font></Button>
-            <Button fx:id="infoButton" layoutX="130.0" layoutY="384.0" mnemonicParsing="false" onAction="#handleInfoButtonPressed" prefHeight="103.0" prefWidth="321.0" text="HOW TO PLAY">
+            <Button fx:id="infoButton" layoutX="127.0" layoutY="349.0" mnemonicParsing="false" onAction="#handleInfoButtonPressed" prefHeight="103.0" prefWidth="321.0" style="-fx-font-size: 24;" text="HOW TO PLAY">
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font></Button>
-            <Button fx:id="quitButton" layoutX="219.0" layoutY="464.0" mnemonicParsing="false" onAction="#handleQuitButtonPressed" prefHeight="76.0" prefWidth="136.0" text="QUIT">
+            <Button fx:id="quitButton" layoutX="219.0" layoutY="439.0" mnemonicParsing="false" onAction="#handleQuitButtonPressed" prefHeight="76.0" prefWidth="136.0" style="-fx-font-size: 24;" text="QUIT">
          <font>
             <Font name="Roboto Regular" size="18.0" />
          </font></Button>
-      <Button fx:id="highScoreButton" layoutX="137.0" layoutY="346.0" mnemonicParsing="false" onAction="#handleHighScoreButtonPressed" prefHeight="76.0" prefWidth="308.0" text="HIGH SCORES">
-         <font>
-            <Font name="Roboto Regular" size="18.0" />
-         </font>
-      </Button>
          </children>
 </AnchorPane>
